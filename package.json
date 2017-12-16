@@ -1,0 +1,25 @@
+{
+  "name": "template-startup",
+  "version": "0.0.0",
+  "server": false,
+  "private": true,
+  "scripts": {
+    "test": "",
+    "build": ""
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "nodemon": "latest",
+    "turbo360": "^1.5.12",
+    "vertex360": "latest"
+  },
+  "devDependencies": {
+    "express": "latest",
+    "rimraf": "latest"
+  },
+  "app": "5a34ada31268d60014e7c922",
+  "deploy": [
+    "."
+  ],
+  "format": "vertex"
+}
