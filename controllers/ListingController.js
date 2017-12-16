@@ -9,6 +9,16 @@ const resource = 'listing'
 	can be thought of as a "widget"
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+
+const slugify = function(text){
+ 	return text.toString().toLowerCase()
+			.replace(/\s+/g, '-')           // Replace spaces with -
+			.replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+			.replace(/\-\-+/g, '-')         // Replace multiple - with single -
+			.replace(/^-+/, '')             // Trim - from start of text
+			.replace(/-+$/, '');            // Trim - from end of text
+}
+
 module.exports = {
 	get: (params) => {
 		return new Promise((resolve, reject) => {
@@ -36,6 +46,9 @@ module.exports = {
 
 	post: (params) => {
 		return new Promise((resolve, reject) => {
+			if (params.slug == null)
+				params['slug'] = slugify(params.name)
+			
 			turbo.create(resource, params)
 			.then(data => {
 				resolve(data)
