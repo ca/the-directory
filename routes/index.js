@@ -13,12 +13,9 @@ const USER_NOT_LOGGED_IN = 'User%20Not%20Logged%20In'
 	to fetch or update the necessary data.
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
+// add more static pages here if necessary
 const staticPages = {
-	landing: 'landing',
-	blog: 'blog',
-	post: 'post',
-	profile: 'profile'
+	landing: 'landing'
 }
 
 // this route loads the landing/home page. It is the primary
