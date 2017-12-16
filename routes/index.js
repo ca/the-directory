@@ -70,6 +70,16 @@ router.get('/profiles', (req, res) => {
 	})
 })
 
+router.get('/listings', (req, res) => {
+	controllers.listing.get(req.query)
+	.then(data => {
+		res.render('listings', {listings: data})
+	})
+	.catch(err => {
+		res.redirect('/error?message=' + err.message)
+	})
+})
+
 // this page shows and individual blog post specified by slug:
 router.get('/post/:slug', (req, res) => {
 	controllers.post.get({slug:req.params.slug})
