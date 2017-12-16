@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	{{>head}}
+</head>
+
+<body>
+	{{>nav}}
+	
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px">
+			<h1>Listings Page</h1>
+			<hr />
+			<div class="grey-box">
+				<h3>Purpose</h3>
+				<hr />
+				<p>This page shows all blog posts currently on the app.</p>
+
+				<br />
+				<h3>Current Listings</h3>
+				<hr />
+
+				<ol style="text-align:left">
+				{{#listings}}
+					<li><a href="/post/{{slug}}">{{name}}</a></li>
+				{{/listings}}
+				</ol>
+			</div>
+
+			<div class="grey-box">
+				<h3>Create Listing</h3>
+				<hr />
+
+				<form action="/" method="POST">
+					<input id="blog-title" class="form-control" type="text" name="title" placeholder="Title" /><br />
+					<textarea id="blog-text" class="form-control" name="text" placeholder="Text"></textarea><br />
+					<button id="blog-submit" type="submit" class="btn btn-info">Create Post</button>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.
+	NOTE: These should be minified in a build script -->
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/dropzone.js"></script> 
+	<script type="text/javascript" src="https://cdn.turbo360-dev.com/dist/turbo.min.js"></script>
+	<script type="text/javascript" src="/js/app.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#blog-submit').click(function(event){
+				event.preventDefault()
+				var post = {
+					title: $('#blog-title').val(),
+					text: $('#blog-text').val()
+				}
+
+				$.ajax({
+					url : '/api/post',
+					type: 'POST',
+					data : post,
+					success: function(data, textStatus, jqXHR){
+						if (data.confirmation != 'success'){
+							alert('Error: ' + data.message)
+							return
+						}
+
+						window.location.href = '/blog'
+					},
+					error: function (jqXHR, textStatus, err){
+						alert('Error: ' + err.message)
+					}
+				})
+			})
+		})
+	</script>
+</body>
+</html>
