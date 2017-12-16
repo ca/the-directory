@@ -80,6 +80,22 @@ router.get('/listings', (req, res) => {
 	})
 })
 
+router.get('/listing/:slug', (req, res) => {
+	controllers.listing.get({slug:req.params.slug})
+	.then(data => {
+		if (data.length == 0){ // not found, throw error
+			throw new Error('Listing not found.')
+			return
+		}
+
+		const listing = data[0]		
+		res.render('listing', {listing: listing})
+	})
+	.catch(err => {
+		res.redirect('/error?message=' + err.message)
+	})
+})
+
 // this page shows and individual blog post specified by slug:
 router.get('/post/:slug', (req, res) => {
 	controllers.post.get({slug:req.params.slug})
