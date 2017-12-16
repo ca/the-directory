@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	{{>head}}
+</head>
+
+<body class="container">
+	<div class="row">
+
+		<div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px">
+			<h1>Profile Page</h1>
+			<hr />
+			<div class="grey-box">
+				<h3>Purpose</h3>
+				<hr />
+				<p>
+					This page shows individual profiles specified by username.
+				</p>
+			</div>
+
+			<div class="grey-box">
+				<h3>{{profile.username}}</h3>
+				<hr />
+				<p>{{profile.email}}</p>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.
+	NOTE: These should be minified in a build script -->
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/dropzone.js"></script> 
+	<script type="text/javascript" src="https://cdn.turbo360-dev.com/dist/turbo.min.js"></script>
+	<script type="text/javascript" src="/js/app.js"></script>
+
+</body>
+</html>

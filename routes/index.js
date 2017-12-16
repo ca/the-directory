@@ -18,8 +18,7 @@ const staticPages = {
 	landing: 'landing',
 	blog: 'blog',
 	post: 'post',
-	profile: 'profile',
-	profiles: 'profiles'
+	profile: 'profile'
 }
 
 // this route loads the landing/home page. It is the primary
@@ -65,6 +64,16 @@ router.get('/blog', (req, res) => {
 	})
 })
 
+router.get('/profiles', (req, res) => {
+	turbo.fetch('user', req.query)
+	.then(data => {
+		res.render('profiles', {profiles: data})
+	})
+	.catch(err => {
+		res.redirect('/error?message=' + err.message)
+	})
+})
+
 // this page shows and individual blog post specified by slug:
 router.get('/post/:slug', (req, res) => {
 	turbo.fetch('post', {slug:req.params.slug})
@@ -76,6 +85,22 @@ router.get('/post/:slug', (req, res) => {
 
 		const post = data[0]
 		res.render('post', {post: post})
+	})
+	.catch(err => {
+		res.redirect('/error?message=' + err.message)
+	})
+})
+
+router.get('/profile/:username', (req, res) => {
+	turbo.fetch('user', {username:req.params.username})
+	.then(data => {
+		if (data.length == 0){ // not found, throw error
+			throw new Error('User not found.')
+			return
+		}
+
+		const profile = data[0]
+		res.render('profile', {profile: profile})
 	})
 	.catch(err => {
 		res.redirect('/error?message=' + err.message)

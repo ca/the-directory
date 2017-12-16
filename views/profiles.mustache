@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	{{>head}}
+</head>
+
+<body class="container">
+	<div class="row">
+
+		<div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px">
+			<h1>Profiles Page</h1>
+			<hr />
+			<div class="grey-box">
+				<h3>Purpose</h3>
+				<hr />
+				<p>
+					This page shows user profiles currently on the app. It is suited for a featured users section if your startup has a social element to it. For example, if the site focuses on skilled-labor, this page could be used to show the highest-rated chefs in the nearby vicinity.
+				</p>
+			</div>
+
+			<div class="grey-box">
+				<h3>Profiles</h3>
+				<hr />
+				<ol style="text-align:left">
+				{{#profiles}}
+					<li><a href="/profile/{{username}}">{{username}}</a></li>
+				{{/profiles}}
+				</ol>
+
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.
+	NOTE: These should be minified in a build script -->
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/dropzone.js"></script> 
+	<script type="text/javascript" src="https://cdn.turbo360-dev.com/dist/turbo.min.js"></script>
+	<script type="text/javascript" src="/js/app.js"></script>
+
+</body>
+</html>
