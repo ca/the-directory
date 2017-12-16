@@ -49,6 +49,33 @@ router.get('/dashboard', (req, res) => {
 	})
 })
 
+
+router.get('/profiles', (req, res) => {
+	controllers.user.get(req.query)
+	.then(data => {
+		res.render('profiles', {profiles: data})
+	})
+	.catch(err => {
+		res.redirect('/error?message=' + err.message)
+	})
+})
+
+router.get('/profile/:username', (req, res) => {
+	controllers.user.get({username:req.params.username})
+	.then(data => {
+		if (data.length == 0){ // not found, throw error
+			throw new Error('User not found.')
+			return
+		}
+
+		const profile = data[0]
+		res.render('profile', {profile: profile})
+	})
+	.catch(err => {
+		res.redirect('/error?message=' + err.message)
+	})
+})
+
 // this page shows all blog posts currently on the app:
 router.get('/blog', (req, res) => {
 	controllers.post.get(req.query)
@@ -60,10 +87,18 @@ router.get('/blog', (req, res) => {
 	})
 })
 
-router.get('/profiles', (req, res) => {
-	controllers.user.get(req.query)
+
+// this page shows and individual blog post specified by slug:
+router.get('/post/:slug', (req, res) => {
+	controllers.post.get({slug:req.params.slug})
 	.then(data => {
-		res.render('profiles', {profiles: data})
+		if (data.length == 0){ // not found, throw error
+			throw new Error('Post not found.')
+			return
+		}
+
+		const post = data[0]
+		res.render('post', {post: post})
 	})
 	.catch(err => {
 		res.redirect('/error?message=' + err.message)
@@ -96,38 +131,6 @@ router.get('/listing/:slug', (req, res) => {
 	})
 })
 
-// this page shows and individual blog post specified by slug:
-router.get('/post/:slug', (req, res) => {
-	controllers.post.get({slug:req.params.slug})
-	.then(data => {
-		if (data.length == 0){ // not found, throw error
-			throw new Error('Post not found.')
-			return
-		}
-
-		const post = data[0]
-		res.render('post', {post: post})
-	})
-	.catch(err => {
-		res.redirect('/error?message=' + err.message)
-	})
-})
-
-router.get('/profile/:username', (req, res) => {
-	controllers.user.get({username:req.params.username})
-	.then(data => {
-		if (data.length == 0){ // not found, throw error
-			throw new Error('User not found.')
-			return
-		}
-
-		const profile = data[0]
-		res.render('profile', {profile: profile})
-	})
-	.catch(err => {
-		res.redirect('/error?message=' + err.message)
-	})
-})
 
 // this page handles general errors. the error message is passed
 // in as a query parameter with key "message" and rendered in the 
