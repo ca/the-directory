@@ -1,4 +1,3 @@
-const turbo = require('turbo360')({site_id: process.env.TURBO_APP_ID})
 const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 const router = vertex.router()
 const controllers = require('../controllers')
@@ -41,7 +40,7 @@ router.get('/dashboard', (req, res) => {
 		return
 	}
 
-	turbo.fetchOne('user', req.vertexSession.user.id)
+	controllers.user.getById(req.vertexSession.user.id)
 	.then(data => {
 		res.render('dashboard', {user: data}) // user data passed in as "user" key for Mustache rendering
 	})
@@ -52,7 +51,7 @@ router.get('/dashboard', (req, res) => {
 
 // this page shows all blog posts currently on the app:
 router.get('/blog', (req, res) => {
-	turbo.fetch('post', req.query)
+	controllers.post.get(req.query)
 	.then(data => {
 		res.render('blog', {posts: data})
 	})
@@ -62,7 +61,7 @@ router.get('/blog', (req, res) => {
 })
 
 router.get('/profiles', (req, res) => {
-	turbo.fetch('user', req.query)
+	controllers.user.get(req.query)
 	.then(data => {
 		res.render('profiles', {profiles: data})
 	})
@@ -73,7 +72,7 @@ router.get('/profiles', (req, res) => {
 
 // this page shows and individual blog post specified by slug:
 router.get('/post/:slug', (req, res) => {
-	turbo.fetch('post', {slug:req.params.slug})
+	controllers.post.get({slug:req.params.slug})
 	.then(data => {
 		if (data.length == 0){ // not found, throw error
 			throw new Error('Post not found.')
@@ -89,7 +88,7 @@ router.get('/post/:slug', (req, res) => {
 })
 
 router.get('/profile/:username', (req, res) => {
-	turbo.fetch('user', {username:req.params.username})
+	controllers.user.get({username:req.params.username})
 	.then(data => {
 		if (data.length == 0){ // not found, throw error
 			throw new Error('User not found.')
