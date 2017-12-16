@@ -65,6 +65,23 @@ router.get('/blog', (req, res) => {
 	})
 })
 
+// this page shows and individual blog post specified by slug:
+router.get('/post/:slug', (req, res) => {
+	turbo.fetch('post', {slug:req.params.slug})
+	.then(data => {
+		if (data.length == 0){ // not found, throw error
+			throw new Error('Post not found.')
+			return
+		}
+
+		const post = data[0]
+		res.render('post', {post: post})
+	})
+	.catch(err => {
+		res.redirect('/error?message=' + err.message)
+	})
+})
+
 // this page handles general errors. the error message is passed
 // in as a query parameter with key "message" and rendered in the 
 // template via Mustache templating:
