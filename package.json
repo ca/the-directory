@@ -1,5 +1,5 @@
 {
-  "name": "template-startup",
+  "name": "lister-startup",
   "version": "0.0.0",
   "server": false,
   "private": true,
@@ -10,14 +10,25 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "nodemon": "latest",
-    "turbo360": "^1.5.12",
+    "turbo360": "^1.5.16",
     "vertex360": "latest"
   },
   "devDependencies": {
     "express": "latest",
-    "rimraf": "latest"
+    "rimraf": "latest",
+    "grunt": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^2.1.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-partials-imported": "^1.0.5",
+    "gulp-uglify": "^3.0.0",
+    "uglify": "^0.1.5"
   },
-  "app": "5a34ada31268d60014e7c922",
+  "app": "5a39290f529e850014a19dd9",
   "deploy": [
     "."
   ],

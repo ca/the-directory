@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	{{>head}}
+</head>
+
+<body>
+	{{>nav}}
+	
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px">
+			<h1>Listings Page</h1>
+			<hr />
+			<div class="grey-box">
+				<h3>Purpose</h3>
+				<hr />
+				<p>This page shows all listings currently on the app.</p>
+
+				<br />
+				<h3>Current Listings</h3>
+				<hr />
+
+				<ol style="text-align:left">
+					{{#listings}}
+					<li><a href="/listing/{{slug}}">{{name}}</a></li>
+					{{/listings}}
+				</ol>
+			</div>
+
+			<div class="grey-box">
+				<h3>Create Listing</h3>
+				<hr />
+
+				<form action="/" method="POST">
+					<input id="listing-name" class="form-control" type="text" name="name" placeholder="Name" /><br />
+					<textarea id="listing-description" class="form-control" name="text" placeholder="Description"></textarea><br />
+					<button id="listing-submit" type="submit" class="btn btn-info">Create Listing</button>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.
+	NOTE: These should be minified in a build script -->
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/dropzone.js"></script> 
+	<script type="text/javascript" src="https://cdn.turbo360-dev.com/dist/turbo.min.js"></script>
+	<script type="text/javascript" src="/js/app.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#listing-submit').click(function(event){
+				event.preventDefault()
+				var listing = {
+					name: $('#listing-name').val(),
+					description: $('#listing-description').val()
+				}
+
+				$.ajax({
+					url : '/api/listing',
+					type: 'POST',
+					data : listing,
+					success: function(data, textStatus, jqXHR){
+						if (data.confirmation != 'success'){
+							alert('Error: ' + data.message)
+							return
+						}
+
+						window.location.href = '/listings'
+					},
+					error: function (jqXHR, textStatus, err){
+						alert('Error: ' + err.message)
+					}
+				})
+			})
+		})
+	</script>
+</body>
+</html>

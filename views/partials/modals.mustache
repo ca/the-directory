@@ -1,0 +1,49 @@
+<!-- Login /Register Form-->
+<div class="container">
+    <div id="modal" class="popupContainer" style="display: none;">
+        <header class="popupHeader">
+            <span class="header_title">Login</span>
+            <span class="modal_close"><i class="fa fa-times"></i></span>
+        </header>
+
+        <div class="popupBody">
+            <!-- Username & Password Login form -->
+            <div class="user_login">
+                <form action="/auth/login" method="post">
+                    <input name="email" type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 " placeholder="email address" />
+                    <br />
+
+                    <input name="password" type="password" class="form-control border-top-0 border-left-0 border-right-0 rounded-0 " placeholder="password" />
+                    <br />
+
+                    <div class="action_btns">
+                        <input value="Login" type="submit" class="btn btn-primary btn-default mt-3 w-100" />
+                    </div>
+                </form>
+                <br/>
+                <hr/>
+                Don't have an account <a href="#" class="register_form">Sign Up</a>
+            </div>
+
+            <!-- Register Form -->
+            <div class="user_register">
+                <form action="/auth/register" method="post">
+                    <input name="username" type="text" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Username" />
+                    <br />
+
+                    <input name="email" type="email" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Email Address" />
+                    <br />
+
+                    <input name="password" type="password" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Password" />
+                    <br />
+
+                    <div class="action_btns">
+                        <input value="Register" type="submit" href="#" class="btn btn-primary btn-default mt-3 w-100" />
+                    </div>
+                </form>
+                <br/><hr/>
+                Already have an account <a href="#" class="login_form">Sign In</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,4 @@
+const turbo = require('turbo360')({site_id: process.env.TURBO_APP_ID})
 const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 const router = vertex.router()
 const controllers = require('../controllers')
@@ -14,7 +15,9 @@ const USER_NOT_LOGGED_IN = 'User%20Not%20Logged%20In'
 
 // add more static pages here if necessary
 const staticPages = {
-	landing: 'landing'
+	landing: 'landing',
+	contact: 'contact',
+	services: 'services'
 }
 
 // this route loads the landing/home page. It is the primary
@@ -22,7 +25,21 @@ const staticPages = {
 // the key value proposition as well as guide the visitor to
 // a prominent call-to-action registration form:
 router.get('/', (req, res) => {
-	res.render('landing', null)
+	turbo.pageData('home')
+    .then(static => {
+
+        controllers.user.get(req.query)
+		.then(mentors => {
+			res.render(static.template, {static: static, mentors: mentors})
+		})
+		.catch(err => {
+			res.redirect('/error?message=' + err.message)
+		})
+
+    })
+    .catch(err => {
+        res.render(page, null)
+    })
 })
 
 // this template does not load unless the user is logged in.
@@ -106,9 +123,9 @@ router.get('/post/:slug', (req, res) => {
 })
 
 router.get('/listings', (req, res) => {
-	controllers.listing.get(req.query)
+	controllers.user.get(req.query)
 	.then(data => {
-		res.render('listings', {listings: data})
+		res.render('listings', {mentors: data})
 	})
 	.catch(err => {
 		res.redirect('/error?message=' + err.message)
@@ -147,7 +164,16 @@ router.get('/:page', (req, res) => {
 		return
 	}
 
-	res.render(page, null)
+	// turbo.pageData('contact')
+	turbo.pageData(req.params.page)
+	.then(data => {
+		// console.log('PAGE DATA: ' + JSON.stringify(data))
+		res.render(data.template, data)
+	})
+	.catch(err => {
+		// console.log('ERROR: ' + err.message)
+		res.render(page, null)
+	})
 })
 
 

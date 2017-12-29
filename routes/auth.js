@@ -35,26 +35,46 @@ router.post('/login', (req, res) => {
 
 router.post('/update', (req, res) => {
 	if (req.vertexSession == null){ // user not logged in, prevent update
-		res.redirect('/error?message=' + USER_NOT_LOGGED_IN)
+		res.json({
+			confirmation: 'fail',
+			message: USER_NOT_LOGGED_IN
+		})
+		// res.redirect('/error?message=' + USER_NOT_LOGGED_IN)
 		return
 	}
 
 	if (req.vertexSession.user == null){ // user not logged in
-		res.redirect('/error?message=' + USER_NOT_LOGGED_IN)
+		res.json({
+			confirmation: 'fail',
+			message: USER_NOT_LOGGED_IN
+		})
+		// res.redirect('/error?message=' + USER_NOT_LOGGED_IN)
 		return
 	}
 
 	if (req.body.id != req.vertexSession.user.id){ // user ID's don't match, unauthorized
-		res.redirect('/error?message=Not%20Authorized')
+		res.json({
+			confirmation: 'fail',
+			message: 'Not Authorized'
+		})
+		// res.redirect('/error?message=Not%20Authorized')
 		return
 	}
 
 	turbo.updateEntity('user', req.body.id, req.body)
 	.then(data => {
-		res.redirect('/dashboard')
+		// res.redirect('/dashboard')
+		res.json({
+			confirmation: 'success',
+			data: data
+		})
 	})
 	.catch(err => {
-		res.redirect('/error?message=' + err.message)
+		res.json({
+			confirmation: 'fail',
+			message: err.message
+		})
+		// res.redirect('/error?message=' + err.message)
 	})
 })
 

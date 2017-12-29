@@ -1,62 +1,375 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en-US">
-<head>
-	{{>head}}
-</head>
+<html lang="en">
+    <head>
+        {{>head}}
+        <style type="text/css">
+            input {
+                padding-left: 0px !important;
+            }
 
-<body>
-	{{>nav}}
+            .input-label {
+                padding-top: 12px !important;
+                font-weight: 600;
+                color: #333;
+            }
 
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px">
-			<h1>Dashboard Page</h1>
-			<hr />
-			<div class="grey-box">
-				<h3>Purpose</h3>
-				<hr />
-				<p>
-					This is the main user admin console page. Only logged-in users should be able to access this page and the general user-updating functionity should be placed here: change password, username, upload image, etc.
-				</p>
-				<p>
-					Also, app-specific management should happen here as well. For example, if the app allows user to send messages, those messages should show up on this page.
-				</p>
-			</div>
+            .detail {
+                font-weight: 200;
+                font-size: 14px;
+            }
+        </style>
+    </head>
 
-			<div class="grey-box">
-				<h3>Current User</h3>
-				<hr />
-				<p>Update current user details below:</p>
+    <body>
+        <div id="header-fix" class="header fixed-top">        
+            {{>nav}}
+        </div>
 
-				<form action="/auth/update" method="POST">
-					<input class="form-control" value="{{user.email}}" type="text" name="email" placeholder="Email" /><br />
-					<input class="form-control" value="{{user.username}}" type="text" name="username" placeholder="Username" /><br />
-					<input class="form-control" value="{{user.password}}" type="password" name="password" placeholder="Password" /><br />
-					<input class="form-control" type="hidden" name="id" value="{{user.id}}" />
-					<button type="submit" class="btn btn-info">Update Profile</button>
-				</form>
-			</div>
+        <!-- Page Inner -->
+        <section class="lis-bg-light pb-5">
+            <div class="container pt-5">
+                <div class="row wow fadeInUp">
+                    <div class="col-12 col-sm-6">
+                        <div class="page-title">
+                            <h2>Manage Your Profile</h2>
+                            <p class="mb-0">
+                                Update your profile information, images and manage your listings.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Page Inner -->
 
-			<div class="grey-box">
-				<h3>Log Out</h3>
-				<hr />
-				<p>Click the link below to log out. After successfully logging out, app redirects to landing.mustache page.<br /><br /><a class="btn btn-danger" href="/auth/logout">Log Out</a></p>
+        <!-- Pricing -->
+        <section style="background:#fffffa;border-top:1px solid #ddd">
+            <div class="container">
+                <div class="row">
 
-			</div>
-		</div>
-	</div>
+                    <div class="col-12 col-lg-8 mb-5 mb-lg-0">
+
+                        <div class="card lis-brd-light wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                            <div class="card-body p-0">
+                                <div class="row p-4">
+                                    <div class="col-12 col-sm-12 mb-3">
+                                        <h6 class="lis-font-weight-500">
+                                            <i class="fa fa-align-left pr-2 lis-f-14"></i> Basic Info
+                                        </h6>
+
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label input-label">First Name</label>
+                                            <div class="col-12 col-md-10">
+                                                <input autocomplete="first name" id="profile-first-name" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="First Name" value="{{user.firstName}}" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label input-label">Last Name</label>
+                                            <div class="col-12 col-md-10">
+                                                <input id="profile-last-name" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Last name" value="{{user.lastName}}" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label input-label">Username</label>
+                                            <div class="col-12 col-md-10">
+                                                <input id="profile-username" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Username" value="{{user.username}}" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label input-label">Bio</label>
+                                            <div class="col-12 col-md-10">
+                                                <textarea id="profile-bio" style="background:#f9f9f9;border:none" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Bio">{{user.bio}}</textarea>
+
+                                                <input id="profile-id" type="hidden" value="{{user.id}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12" style="text-align:right">
+                                        <a id="profile-update-button" href="#" class="btn btn-primary btn-default mt-3">Update Profile</a>
+                                    </div>
+                                </div>
+
+                                <hr/>
+
+                                <div class="row p-4">
+                                    <div class="col-12 col-sm-12 mb-3">
+                                        <h6 class="lis-font-weight-500">
+                                            <i class="fa fa-file-image-o pr-2 lis-f-14"></i> Images
+                                        </h6>
+
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Primary Image</label>
+                                            <div class="col-12 col-md-9">
+                                                <a target="_blank" href="{{user.image}}">
+                                                    <img id="profile-icon" style="margin-right:12px" src="{{user.image}}=s64-c" />
+                                                </a>
+                                                <button class="btn btn-info" id="btn-image-upload">Select Image</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Cover Image</label>
+                                            <div class="col-12 col-md-9">
+                                                <a target="_blank" href="{{user.coverImage}}">
+                                                    <img id="profile-cover-image" style="margin-right:12px" src="{{user.coverImage}}=s64-c" />
+                                                </a>
+
+                                                <button class="btn btn-info" id="btn-cover-image-upload">Select Cover Image</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr/>
+
+                                <div class="row p-4">
+                                    <div class="col-12 col-sm-12 mb-3">
+                                        <h6 class="lis-font-weight-500"><i class="fa fa-link pr-2 lis-f-14"></i>  Amenities </h6>
+
+                                    </div>
+                                    <div class="col-12 col-sm-12 social-information">
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Car Parking
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+
+                                            </div>
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Accepted Bank Cards
+                                                    <input type="checkbox" checked="checked">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Wheelchair Accessible
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Smoking Allowed
+                                                    <input type="checkbox" checked="checked">
+                                                    <span class="checkmark"></span>
+                                                </label>
+
+                                            </div>
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Events
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Good for Kids
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Wireless Internet
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+
+                                            </div>
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Friendly Workspace
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Outdoor Seating
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Elevator in Building
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <label class="custom-checkbox">Street Parking
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+
+                                            </div>
+                                            <div class="col-12 col-md-4">
+
+                                                <label class="custom-checkbox">Takes Reservations
+                                                    <input type="checkbox" checked="checked">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4 mb-5 mb-lg-0">
+                        <div class="card lis-brd-light text-center text-lg-left">
+                            <a href="#">
+                                <div style="max-height:140px" class="lis-grediant grediant-tb-light2 lis-relative modImage rounded-top">
+                                    <img src="{{user.coverImage}}=s320" alt="" class="img-fluid rounded-top w-100">
+                                </div>
+                            </a>
+                            <div class="card-body pt-0">
+                                <div class="media d-block d-lg-flex lis-relative">
+                                    <img src="{{user.image}}=s80-c" alt="" class="lis-mt-minus-15 img-fluid d-lg-flex mx-auto mr-lg-3 mb-4 mb-lg-0 border lis-border-width-2 rounded-circle border-white" width="80">
+                                    <div class="media-body align-self-start mt-2">
+                                        <h6 class="mb-0 lis-font-weight-600">
+                                            <a href="#" style="text-transform:capitalize" class="lis-dark">{{user.firstName}} {{user.lastName}}</a>
+                                        </h6>
+                                        <small>{{user.username}}</small>
+                                    </div>
+                                </div>
+                                <hr />
+                                <p class="detail">{{user.bio}}</p>
+                                <ul class="list-unstyled my-4 lis-line-height-2">
+                                    <li><i class="fa fa-phone pr-2"></i> +88 25 5894 2589</li>
+                                    <li><i class="fa fa-map-o pr-2"></i> First Street, New York, USA</li>
+                                </ul>
+                                <div class="clearfix">
+                                    <div class="float-none float-lg-left mb-3 mb-lg-0 mt-1">
+                                        <a href="#" class="text-white"><i class="icofont icofont-travelling px-2 lis-bg5 py-2 lis-rounded-circle-50 lis-f-14"></i></a>
+                                        <a href="#" class="lis-id-info lis-light p-2 lis-rounded-circle-50 lis-f-14">1 More...</a>
+                                    </div>
+                                    <div class="float-none float-lg-right mt-1">
+                                        <a href="#" class="lis-light lis-f-14"><i class="fa fa-envelope-o lis-id-info  lis-rounded-circle-50 text-center"></i></a>
+                                        <a href="#" class="lis-light lis-f-14"><i class="fa fa-heart-o lis-id-info  lis-rounded-circle-50 text-center"></i></a>
+                                        <a href="#" class="lis-green-light text-white text-white p-2 lis-rounded-circle-50 lis-f-14 lis-line-height-2"><i class="fa fa-star"></i> 4.0</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-  <!-- Turbo library imports: jQuery, Turbo CDN, sample app.js.
-  NOTE: These should be minified in a build script -->
-  <script type="text/javascript" src="/js/jquery.js"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- For file uploading. Remove if file upload not necessry -->
-  <script type="text/javascript" src="/js/dropzone.js"></script> 
+        {{>footer}}
+        {{>modals}}
+        {{>imports}}
 
-  <!-- Turbo CDN. Better to use CDN than to store locally. -->
-  <script type="text/javascript" src="https://cdn.turbo360-dev.com/dist/turbo.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var commitUpdates = function(updatedProfile, completion){
+                    $.ajax({
+                        url : '/auth/update',
+                        type: 'POST',
+                        data : updatedProfile,
+                        success: function(response, textStatus, jqXHR){
+                            if (response.confirmation != 'success'){
+                                alert('Error: ' + response.message)
+                                return
+                            }
 
-  <!-- Your app specific code -->
-  <script type="text/javascript" src="/js/app.js"></script>
-</body>
+                            console.log(JSON.stringify(response))
+                            alert('Profile Updated')
+                            if (completion == null)
+                                return
+
+                            completion(response.data)
+                        },
+                        error: function (jqXHR, textStatus, err){
+                            alert('Error: ' + err.message)
+                        }
+                    })
+                }
+
+                var turbo = Turbo({site_id: '5a39290f529e850014a19dd9'})
+                $('#btn-image-upload').click(function(event){
+                    event.preventDefault()
+                    turbo.uploadFile(function(err, data){
+                        if (err){
+                            alert('Error:' + err.message)
+                            return
+                        }
+
+                        if (data.confirmation != 'success'){
+                            alert('Error: ' + data.message)
+                            return
+                        }
+
+                        var updatedProfile = {
+                            id: $('#profile-id').val(),
+                            image: data.result.url
+                        }
+
+                        commitUpdates(updatedProfile, function(profile){
+                            $('#profile-icon').attr('src', profile.image+'=s64-c')
+                        })
+                    })
+                })
+
+                $('#btn-cover-image-upload').click(function(event){
+                    event.preventDefault()
+                    console.log("ALERT COVER IMAGE");
+                    turbo.uploadFile(function(err, data){
+                        if (err){
+                            alert('Error:' + err.message)
+                            return
+                        }
+
+                        if (data.confirmation != 'success'){
+                            alert('Error: ' + data.message)
+                            return
+                        }
+
+                        var updatedProfile = {
+                            id: $('#profile-id').val(),
+                            coverImage: data.result.url
+                        }
+
+                        commitUpdates(updatedProfile, function(profile){
+                            $('#profile-cover-image').attr('src', profile.coverImage+'=s64-c')
+                        })
+                    })
+                })
+
+                $('#profile-update-button').click(function(event){
+                    event.preventDefault()
+                    var updatedProfile = {
+                        firstName: $('#profile-first-name').val().trim(),
+                        lastName: $('#profile-last-name').val().trim(),
+                        username: $('#profile-username').val().trim(),
+                        bio: $('#profile-bio').val().trim(),
+                        id: $('#profile-id').val()
+                    }
+
+                    commitUpdates(updatedProfile, null)
+                })                
+            })
+        </script>
+    </body>
+
 </html>
