@@ -43,7 +43,7 @@
         <!--End Page Inner -->
 
         <!-- Pricing -->
-        <section style="background:#fffffa;border-top:1px solid #ddd">
+        <section>
             <div class="container">
                 <div class="row">
 
@@ -51,6 +51,39 @@
 
                         <div class="card lis-brd-light wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <div class="card-body p-0">
+                                <!-- User Images -->
+                                <div class="row p-4">
+                                    <div class="col-12 col-sm-12 mb-3">
+                                        <h6 class="lis-font-weight-500">
+                                            <i class="fa fa-file-image-o pr-2 lis-f-14"></i> Images
+                                        </h6>
+
+                                    </div>
+                                    <div class="col-12 col-sm-12">
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Primary Image</label>
+                                            <div class="col-12 col-md-9">
+                                                <a target="_blank" href="{{user.image}}">
+                                                    <img id="profile-icon" style="margin-right:12px" src="{{user.image}}=s64-c" />
+                                                </a>
+                                                <button class="btn btn-info" id="btn-image-upload">Select Image</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Cover Image</label>
+                                            <div class="col-12 col-md-9">
+                                                <a target="_blank" href="{{user.coverImage}}">
+                                                    <img id="profile-cover-image" style="margin-right:12px" src="{{user.coverImage}}=s64-c" />
+                                                </a>
+
+                                                <button class="btn btn-info" id="btn-cover-image-upload">Select Cover Image</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <!-- Basic User Information -->
                                 <div class="row p-4">
                                     <div class="col-12 col-sm-12 mb-3">
                                         <h6 class="lis-font-weight-500">
@@ -90,67 +123,35 @@
                                         <a id="profile-update-button" href="#" class="btn btn-primary btn-default mt-3">Update Profile</a>
                                     </div>
                                 </div>
-
-                                <hr/>
-
-                                <div class="row p-4">
-                                    <div class="col-12 col-sm-12 mb-3">
-                                        <h6 class="lis-font-weight-500">
-                                            <i class="fa fa-file-image-o pr-2 lis-f-14"></i> Images
-                                        </h6>
-
-                                    </div>
-                                    <div class="col-12 col-sm-12">
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Primary Image</label>
-                                            <div class="col-12 col-md-9">
-                                                <a target="_blank" href="{{user.image}}">
-                                                    <img id="profile-icon" style="margin-right:12px" src="{{user.image}}=s64-c" />
-                                                </a>
-                                                <button class="btn btn-info" id="btn-image-upload">Select Image</button>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Cover Image</label>
-                                            <div class="col-12 col-md-9">
-                                                <a target="_blank" href="{{user.coverImage}}">
-                                                    <img id="profile-cover-image" style="margin-right:12px" src="{{user.coverImage}}=s64-c" />
-                                                </a>
-
-                                                <button class="btn btn-info" id="btn-cover-image-upload">Select Cover Image</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 
                                 <hr/>
 
                                 <div class="row p-4">
                                     <div class="col-12 col-sm-12 mb-3">
-                                        <h6 class="lis-font-weight-500"><i class="fa fa-link pr-2 lis-f-14"></i>  Amenities </h6>
-
+                                        <h6 class="lis-font-weight-500"><i class="fa fa-link pr-2 lis-f-14"></i>  Industries </h6>
+                                        <span>Select the industries which you would like to mentor in</span>
                                     </div>
-                                    <div class="col-12 col-sm-12 social-information">
+                                    <div class="col-12 col-sm-12 social-information" id="industries">
                                         <div class="form-group row">
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Car Parking
-                                                    <input type="checkbox">
+                                                <label class="custom-checkbox">Technology
+                                                    <input type="checkbox" name="industries" value="technology">
                                                     <span class="checkmark"></span>
                                                 </label>
 
                                             </div>
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Accepted Bank Cards
-                                                    <input type="checkbox" checked="checked">
+                                                <label class="custom-checkbox">Law
+                                                    <input type="checkbox" name="industries" value="law">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Wheelchair Accessible
-                                                    <input type="checkbox">
+                                                <label class="custom-checkbox">Sports
+                                                    <input type="checkbox" name="industries" value="sports">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </div>
@@ -158,23 +159,23 @@
                                         <div class="form-group row">
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Smoking Allowed
-                                                    <input type="checkbox" checked="checked">
+                                                <label class="custom-checkbox">Military
+                                                    <input type="checkbox" name="industries" value="military">
                                                     <span class="checkmark"></span>
                                                 </label>
 
                                             </div>
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Events
-                                                    <input type="checkbox">
+                                                <label class="custom-checkbox">Government
+                                                    <input type="checkbox" name="industries" value="government">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Good for Kids
-                                                    <input type="checkbox">
+                                                <label class="custom-checkbox">Education
+                                                    <input type="checkbox" name="industries" value="education">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </div>
@@ -182,23 +183,23 @@
                                         <div class="form-group row">
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Wireless Internet
-                                                    <input type="checkbox">
+                                                <label class="custom-checkbox">Venture Capital
+                                                    <input type="checkbox" name="industries" value="venture capital">
                                                     <span class="checkmark"></span>
                                                 </label>
 
                                             </div>
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Friendly Workspace
-                                                    <input type="checkbox">
+                                                <label class="custom-checkbox">Business
+                                                    <input type="checkbox" name="industries" value="business">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Outdoor Seating
-                                                    <input type="checkbox">
+                                                <label class="custom-checkbox">Public Relations
+                                                    <input type="checkbox" name="industries" value="public relations">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </div>
@@ -206,26 +207,29 @@
                                         <div class="form-group row">
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Elevator in Building
-                                                    <input type="checkbox">
+                                                <label class="custom-checkbox">Finance
+                                                    <input type="checkbox" name="industries" value="finance">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </div>
                                             <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Street Parking
-                                                    <input type="checkbox">
+                                                <label class="custom-checkbox">Banking
+                                                    <input type="checkbox" name="industries" value="banking">
                                                     <span class="checkmark"></span>
                                                 </label>
 
                                             </div>
                                             <div class="col-12 col-md-4">
 
-                                                <label class="custom-checkbox">Takes Reservations
-                                                    <input type="checkbox" checked="checked">
+                                                <label class="custom-checkbox">Marketing
+                                                    <input type="checkbox" name="industries" value="marketing">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12" style="text-align:right">
+                                        <a id="update-industries" href="#" class="btn btn-primary btn-default mt-3">Update Industries</a>
                                     </div>
                                 </div>
 
@@ -233,32 +237,46 @@
                         </div>
                     </div>
 
+                    <!-- User Card / Preview -->
                     <div class="col-12 col-lg-4 mb-5 mb-lg-0">
                         <div class="card lis-brd-light text-center text-lg-left">
-                            <a href="#">
+                            {{#user.coverImage}}
+                            <a href="/profile/{{user.username}}">
                                 <div style="max-height:140px" class="lis-grediant grediant-tb-light2 lis-relative modImage rounded-top">
                                     <img src="{{user.coverImage}}=s320" alt="" class="img-fluid rounded-top w-100">
                                 </div>
                             </a>
+                            {{/user.coverImage}}
                             <div class="card-body pt-0">
                                 <div class="media d-block d-lg-flex lis-relative">
+                                    {{#user.image}}
                                     <img src="{{user.image}}=s80-c" alt="" class="lis-mt-minus-15 img-fluid d-lg-flex mx-auto mr-lg-3 mb-4 mb-lg-0 border lis-border-width-2 rounded-circle border-white" width="80">
+                                    {{/user.image}}
                                     <div class="media-body align-self-start mt-2">
                                         <h6 class="mb-0 lis-font-weight-600">
-                                            <a href="#" style="text-transform:capitalize" class="lis-dark">{{user.firstName}} {{user.lastName}}</a>
+                                            <a href="/profile/{{user.username}}" style="text-transform:capitalize" class="lis-dark">{{user.firstName}} {{user.lastName}}</a>
                                         </h6>
-                                        <small>{{user.username}}</small>
+                                        <small>@{{user.username}}</small>
                                     </div>
                                 </div>
                                 <hr />
                                 <p class="detail">{{user.bio}}</p>
                                 <ul class="list-unstyled my-4 lis-line-height-2">
-                                    <li><i class="fa fa-phone pr-2"></i> +88 25 5894 2589</li>
-                                    <li><i class="fa fa-map-o pr-2"></i> First Street, New York, USA</li>
+                                    {{#user.phone}}
+                                    <li><i class="fa fa-phone pr-2"></i> {{user.phone}}</li>
+                                    {{/user.phone}}
+
+                                    {{#user.address}}
+                                    <li><i class="fa fa-map-o pr-2"></i> {{user.address}}</li>
+                                    {{/user.address}}
                                 </ul>
                                 <div class="clearfix">
                                     <div class="float-none float-lg-left mb-3 mb-lg-0 mt-1">
-                                        <a href="#" class="text-white"><i class="icofont icofont-travelling px-2 lis-bg5 py-2 lis-rounded-circle-50 lis-f-14"></i></a>
+
+                                        {{#user.industries}}
+                                        <a href="{{.}}" class="text-white"><i class="icofont icofont-{{.}} px-2 lis-bg5 py-2 lis-rounded-circle-50 lis-f-14"></i></a>
+                                        {{/user.industries}}
+
                                         <a href="#" class="lis-id-info lis-light p-2 lis-rounded-circle-50 lis-f-14">1 More...</a>
                                     </div>
                                     <div class="float-none float-lg-right mt-1">
@@ -269,8 +287,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -367,7 +383,24 @@
                     }
 
                     commitUpdates(updatedProfile, null)
-                })                
+                })
+
+                $('#update-industries').click(function(event){
+                    event.preventDefault()
+                    var ind = [];
+                    $('#industries input:checked').each(function() {
+                        ind.push( $(this).val() )
+                    })
+
+                    // Note: JQuery formats POST params improperly, so they are
+                    // stringified here, and then parsed in 'auth.js'
+                    var updatedProfile = {
+                        industries: JSON.stringify(ind),
+                        id: $('#profile-id').val()
+                    }
+
+                    commitUpdates(updatedProfile, null)
+                })
             })
         </script>
     </body>

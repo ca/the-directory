@@ -1101,7 +1101,7 @@
 .icofont-brand-zain:before {
 	content: "\ea65";
 }
-.icofont-bank-alt:before {
+.icofont-government:before {
 	content: "\ea66";
 }
 .icofont-barcode:before {
@@ -1110,7 +1110,7 @@
 .icofont-basket:before {
 	content: "\ea68";
 }
-.icofont-bill-alt:before {
+.icofont-finance:before {
 	content: "\ea69";
 }
 .icofont-billboard:before {
@@ -1122,10 +1122,10 @@
 .icofont-briefcase-alt-2:before {
 	content: "\ea6c";
 }
-.icofont-building-alt:before {
+.icofont-marketing:before {
 	content: "\ea6d";
 }
-.icofont-businessman:before {
+.icofont-business:before {
 	content: "\ea6e";
 }
 .icofont-businesswoman:before {
@@ -3006,7 +3006,7 @@
 .icofont-ruler-compass-alt:before {
 	content: "\ece0";
 }
-.icofont-ruler-compass:before {
+.icofont-ruler-military:before {
 	content: "\ece1";
 }
 .icofont-ruler-pencil-alt-1:before {
@@ -3780,7 +3780,7 @@
 .icofont-users-alt-6:before {
 	content: "\ede2";
 }
-.icofont-users-social:before {
+.icofont-public:before {
 	content: "\ede3";
 }
 .icofont-users:before {
@@ -4257,7 +4257,7 @@
 .icofont-rugby:before {
 	content: "\ee81";
 }
-.icofont-runner-alt-1:before {
+.icofont-sports:before {
 	content: "\ee82";
 }
 .icofont-runner-alt-2:before {
@@ -4986,7 +4986,7 @@
 .icofont-ban:before {
 	content: "\ef74";
 }
-.icofont-bank:before {
+.icofont-banking:before {
 	content: "\ef75";
 }
 .icofont-bar-code:before {
@@ -5064,7 +5064,7 @@
 .icofont-book-mark:before {
 	content: "\ef8e";
 }
-.icofont-book:before {
+.icofont-education:before {
 	content: "\ef8f";
 }
 .icofont-boot:before {
@@ -5217,7 +5217,7 @@
 .icofont-compass:before {
 	content: "\efc1";
 }
-.icofont-computer:before {
+.icofont-technology:before {
 	content: "\efc2";
 }
 .icofont-connection:before {
@@ -5760,7 +5760,7 @@
 .icofont-molecule:before {
 	content: "\f076";
 }
-.icofont-money:before {
+.icofont-venture:before {
 	content: "\f077";
 }
 .icofont-moon:before {

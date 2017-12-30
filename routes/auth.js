@@ -61,6 +61,14 @@ router.post('/update', (req, res) => {
 		return
 	}
 
+	// Note: JQuery formats POST params improperly, so they are stringified
+	// before sending, and then parsed here.
+	if (req.body.industries != null) {
+		try {
+			req.body.industries = JSON.parse(req.body.industries)
+		} catch (err) {}
+	}
+
 	turbo.updateEntity('user', req.body.id, req.body)
 	.then(data => {
 		// res.redirect('/dashboard')
