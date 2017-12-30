@@ -20,8 +20,9 @@
                         <a href="#" class="text-white">
                             <div class="media d-block d-sm-flex text-sm-left text-center"> <img src="{{ profile.image }}=s120-c" class="img-fluid d-sm-flex mr-0 mr-sm-4 border border-white lis-border-width-4 rounded mb-4 mb-md-0" alt="" />
                                 <div class="media-body align-self-center">
-                                    <h5 class="text-white lis-font-weight-500 lis-line-height-1" style="text-transform: capitalize;">{{ profile.firstName }} {{ profile.lastName }}</h5>
-                                    <p class="mb-0">Member since January,2013</p>
+                                    <h3 class="text-white lis-font-weight-500 lis-line-height-1" style="text-transform: capitalize;">{{ profile.firstName }} {{ profile.lastName }}</h3>
+                                    <span>@{{profile.username}}</span>
+                                    <!-- <p class="mb-0">Member since {{profile.timestamp}}</p> -->
                                 </div>
                             </div>
                         </a>
@@ -59,33 +60,69 @@
                                 <div class="card lis-brd-light wow fadeInUp mb-4">
                                     <div class="card-body p-4">
                                         <div class="media d-md-flex d-block text-center text-md-left">
-                                            <a href="#"><img src="dist/images/user1.jpg" class="img-fluid d-md-flex mr-0 mr-md-5 rounded " alt="" width="280"></a>
+                                            <a href="#"><img src="{{profile.image}}=s240-c" class="img-fluid d-md-flex mr-0 mr-md-5 rounded " alt="" width="280"></a>
                                             <div class="media-body align-self-center mt-4 mt-md-0">
                                                 <h5 class="mb-0 lis-font-weight-500" style="text-transform: capitalize;"><a href="#" class="lis-dark">{{profile.firstName}} {{profile.lastName}}</a></h5>
-                                                <p class="mb-0">Member since January, 2013</p>
-                                                <dl class="row my-2 lis-line-height-2"> <dt class="col-xl-3 col-md-4 lis-font-weight-500 lis-dark">Address:</dt>
-                                                    <dd class="col-xl-9 col-md-8">FirstStreet, New York, USA</dd> <dt class="col-xl-3 col-md-4 lis-font-weight-500 lis-dark">Phone:</dt>
-                                                    <dd class="col-xl-9 col-md-8">+88 25 5894 2589</dd> <dt class="col-xl-3 col-md-4 lis-font-weight-500 lis-dark">Email:</dt>
-                                                    <dd class="col-xl-9 col-md-8"><a href="#" class="lis-primary">example@domain.com</a></dd> <dt class="col-xl-3 col-md-4 lis-font-weight-500 lis-dark">Website</dt>
-                                                    <dd class="col-xl-9 col-md-8"><a href="http://www.themeforest.net" target="blank" class="lis-primary">http://www.themeforest.net</a></dd>
+                                                <!-- <p class="mb-0">Member since {{profile.timestamp}}</p> -->
+                                                <dl class="row my-2 lis-line-height-2">
+                                                    {{#profile.city}}
+                                                    <dt class="col-xl-3 col-md-4 lis-font-weight-500 lis-dark">Address:</dt>
+                                                    <dd class="col-xl-9 col-md-8">{{profile.city}}, {{profile.state}}</dd>
+                                                    {{/profile.city}}
+
+                                                    {{#profile.phone}}
+                                                    <dt class="col-xl-3 col-md-4 lis-font-weight-500 lis-dark">Phone:</dt>
+                                                    <dd class="col-xl-9 col-md-8">{{profile.phone}}</dd>
+                                                    {{/profile.phone}}
+
+                                                    <dt class="col-xl-3 col-md-4 lis-font-weight-500 lis-dark">Email:</dt> <dd class="col-xl-9 col-md-8"><a href="mailto:{{profile.email}}" class="lis-primary">{{profile.email}}</a></dd>
+
+                                                    {{#profile.website}}
+                                                    <dt class="col-xl-3 col-md-4 lis-font-weight-500 lis-dark">Website</dt>
+                                                    <dd class="col-xl-9 col-md-8"><a href="{{profile.website}}" target="blank" class="lis-primary">{{profile.website}}</a></dd>
+                                                    {{/profile.website}}
                                                 </dl>
                                                 <ul class="list-inline my-0">
+                                                    {{#profile.social.length}}
                                                     <li class="list-inline-item mr-0"><a href="#" class="lis-light lis-social border lis-brd-light text-center lis-line-height-2_3 rounded d-block"><i class="fa fa-facebook"></i></a></li>
                                                     <li class="list-inline-item mr-0"><a href="#" class="lis-light lis-social border lis-brd-light text-center lis-line-height-2_3 rounded d-block"><i class="fa fa-twitter"></i></a></li>
                                                     <li class="list-inline-item mr-0"><a href="#" class="lis-light lis-social border lis-brd-light text-center lis-line-height-2_3 rounded d-block"><i class="fa fa-linkedin"></i></a></li>
                                                     <li class="list-inline-item mr-0"><a href="#" class="lis-light lis-social border lis-brd-light text-center lis-line-height-2_3 rounded d-block"><i class="fa fa-tumblr"></i></a></li>
                                                     <li class="list-inline-item mr-0"><a href="#" class="lis-light lis-social border lis-brd-light text-center lis-line-height-2_3 rounded d-block"><i class="fa fa-pinterest-p"></i></a></li>
+                                                    {{/profile.social.length}}
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- User Bio -->
                                 <h6 class="lis-font-weight-500"><i class="fa fa-align-left pr-2 lis-f-14"></i> Biography</h6>
                                 <div class="card lis-brd-light wow fadeInUp">
                                     <div class="card-body p-4">
                                         <p>{{profile.bio}}</p>
                                     </div>
                                 </div>
+                                <br>
+                                <!-- User Industries -->
+                                {{#profile.industries.length}}
+                                <h6 class="lis-font-weight-500"><i class="fa fa-align-left pr-2 lis-f-14"></i> Industries</h6>
+                                <div class="card lis-brd-light wow fadeInUp">
+                                    <div class="card-body p-4 row">
+                                        
+                                        {{#profile.industries}}
+                                        <div class="col-12 col-sm-6 col-lg-3 mb-4 text-center wow fadeInUp">
+                                            <a href="#" class="text-white">
+                                                <div class="lis-categories lis-bg2 rounded lis-font-poppins py-4" style="text-transform: capitalize;">
+                                                    <div class="text-white mb-2 h2"><i class="icofont icofont-{{.}}"></i></div> {{.}}
+                                                </div>
+                                            </a>
+                                        </div>
+                                        {{/profile.industries}}
+
+                                    </div>
+                                </div>
+                                {{/profile.industries.length}}
                             </div>
                             <div class="col-12 col-lg-4">
                                 <h6 class="lis-font-weight-500"><i class="fa fa-star pr-2 lis-f-14"></i> Ratings</h6>

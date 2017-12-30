@@ -1018,6 +1018,29 @@ textarea.form-control {
 
 .nav-pills .nav-item:last-child .nav-link:before {
   display: none; }
+.user-bio { 
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 16px;
+  min-height: 80px;
+}
+#login li {
+  display: inline-block;
+  margin: 5px;
+}
+#logged-in img {
+  border-radius: 50%;
+  margin: 10px;
+}
+#logged-in .nav-link {
+  color: #FFF;
+}
+#logged-in .dropdown-menu li {
+  color: #000;
+  padding: 10px 20px;
+}
 
 .nav-pills .nav-link.active {
   background-color: transparent;

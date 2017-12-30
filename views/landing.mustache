@@ -128,6 +128,21 @@
                             </div>
                         </a>
                     </div>
+                    <div class="post col-md-4 text-center wow fadeInUp mb-4 mb-md-0">
+                        <a href="#" class="text-white">
+                            <div class="text-white lis-relative lis-masonry rounded" style="max-height:225px;overflow:hidden"> <img src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?auto=format&fit=crop&w=1878&q=80" alt="" class="img-fluid rounded w-100">
+                                <div class="overlay rounded"></div>
+                                <div class="lis-absolute lis-right-0 lis-left-0 lis-top-0 w-100 h-100">
+                                    <div class="d-table w-100 h-100">
+                                        <div class="d-table-cell align-middle">
+                                            <h4 class="mb-2 text-white">Government</h4>
+                                            <p>22 Legislators</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -155,12 +170,13 @@
                                 <div class="media d-block d-lg-flex lis-relative"> <img src="{{image}}=s80-c" alt="" class="lis-mt-minus-15 img-fluid d-lg-flex mx-auto mr-lg-3 mb-4 mb-lg-0 border lis-border-width-2 rounded-circle border-white" width="80" />
                                     <div class="media-body align-self-start mt-2">
                                         <h6 class="mb-0 lis-font-weight-600" style="text-transform: capitalize;">
-                                            <a href="#" class="lis-dark">{{firstName}} {{lastName}}</a>
+                                            <a href="/profile/{{username}}" class="lis-dark">{{firstName}} {{lastName}}</a>
                                         </h6>
                                         <span>@{{username}}</span>
                                     </div>
                                 </div>
-                                <p>{{bio}}</p>
+                                <p class="user-bio">{{bio}}</p>
+                                <a href="/profile/{{username}}">Read More</a>
                                 <ul class="list-unstyled my-4 lis-line-height-2">
                                     {{#phone}}
                                     <li><i class="fa fa-phone pr-2"></i> {{phone}}</li>
@@ -168,6 +184,9 @@
 
                                     {{#city}}
                                     <li><i class="fa fa-map-o pr-2"></i> {{city}}, {{state}}</li>
+                                    {{/city}}
+                                    {{^city}}
+                                    <li><i class="fa fa-map-o pr-2"></i> New York, NY</li>
                                     {{/city}}
                                 </ul>
                                 <div class="clearfix">

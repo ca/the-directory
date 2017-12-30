@@ -28,13 +28,27 @@ router.get('/', (req, res) => {
 	turbo.pageData('home')
     .then(static => {
 
-        controllers.user.get(req.query)
+
+    	controllers.user.get(req.query)
 		.then(mentors => {
-			res.render(static.template, {static: static, mentors: mentors})
+			if (req.vertexSession == null || req.vertexSession.user == null){
+				res.render(static.template, {static: static, mentors: mentors, user: null})
+				return
+			}
+
+	    	controllers.user.getById(req.vertexSession.user.id)
+			.then(user => {
+				res.render(static.template, {static: static, mentors: mentors, user: user})
+			})
+			.catch(err => {
+				res.redirect('/error?message=' + err.message)
+			})
+			
 		})
 		.catch(err => {
 			res.redirect('/error?message=' + err.message)
 		})
+
 
     })
     .catch(err => {

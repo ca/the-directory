@@ -93,13 +93,28 @@
             </li>
         </ul>
 
-        <ul class="list-unstyled my-2 my-lg-0">
+        <ul class="list-unstyled my-2 my-lg-0" id="login">
+            {{^user}}
             <li>
                  <a href="#modal" class="text-white login_form">Sign In</a>
             </li>
             <li>
                 <a href="#modal" class="btn btn-info text-white login_form register_form">Register</a>
             </li>
+            {{/user}}
+            {{#user}}
+            <li class="nav-item dropdown" id="logged-in">
+                <a class="nav-link" href="#" data-toggle="dropdown" aria-expanded="false">
+                    {{user.username}}
+                    <img src="{{user.image}}=s48-c"> <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/profile/{{user.username}}">Profile</a></li>
+                    <li><a href="/auth/logout">Logout</a></li>
+                </ul>
+            </li>
+            {{/user}}
         </ul>
         
     </div>
