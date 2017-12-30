@@ -111,6 +111,71 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label input-label">City</label>
+                                            <div class="col-12 col-md-10">
+                                                <input id="profile-city" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="City" value="{{user.city}}" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label input-label">State</label>
+                                            <div class="col-12 col-md-10">
+                                                <select id="profile-state" class="form-control border-top-0 border-left-0 border-right-0 rounded-0">
+                                                    <option value="">Select State</option>
+                                                    <option value="AL">AL</option>
+                                                    <option value="AK">AK</option>
+                                                    <option value="AR">AR</option>  
+                                                    <option value="AZ">AZ</option>
+                                                    <option value="CA">CA</option>
+                                                    <option value="CO">CO</option>
+                                                    <option value="CT">CT</option>
+                                                    <option value="DC">DC</option>
+                                                    <option value="DE">DE</option>
+                                                    <option value="FL">FL</option>
+                                                    <option value="GA">GA</option>
+                                                    <option value="HI">HI</option>
+                                                    <option value="IA">IA</option>  
+                                                    <option value="ID">ID</option>
+                                                    <option value="IL">IL</option>
+                                                    <option value="IN">IN</option>
+                                                    <option value="KS">KS</option>
+                                                    <option value="KY">KY</option>
+                                                    <option value="LA">LA</option>
+                                                    <option value="MA">MA</option>
+                                                    <option value="MD">MD</option>
+                                                    <option value="ME">ME</option>
+                                                    <option value="MI">MI</option>
+                                                    <option value="MN">MN</option>
+                                                    <option value="MO">MO</option>  
+                                                    <option value="MS">MS</option>
+                                                    <option value="MT">MT</option>
+                                                    <option value="NC">NC</option>  
+                                                    <option value="NE">NE</option>
+                                                    <option value="NH">NH</option>
+                                                    <option value="NJ">NJ</option>
+                                                    <option value="NM">NM</option>          
+                                                    <option value="NV">NV</option>
+                                                    <option value="NY">NY</option>
+                                                    <option value="ND">ND</option>
+                                                    <option value="OH">OH</option>
+                                                    <option value="OK">OK</option>
+                                                    <option value="OR">OR</option>
+                                                    <option value="PA">PA</option>
+                                                    <option value="RI">RI</option>
+                                                    <option value="SC">SC</option>
+                                                    <option value="SD">SD</option>
+                                                    <option value="TN">TN</option>
+                                                    <option value="TX">TX</option>
+                                                    <option value="UT">UT</option>
+                                                    <option value="VT">VT</option>
+                                                    <option value="VA">VA</option>
+                                                    <option value="WA">WA</option>
+                                                    <option value="WI">WI</option>  
+                                                    <option value="WV">WV</option>
+                                                    <option value="WY">WY</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label for="example-text-input" class="col-12 col-md-2 col-form-label input-label">Bio</label>
                                             <div class="col-12 col-md-10">
                                                 <textarea id="profile-bio" style="background:#f9f9f9;border:none" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Bio">{{user.bio}}</textarea>
@@ -274,14 +339,13 @@
                                     <div class="float-none float-lg-left mb-3 mb-lg-0 mt-1">
 
                                         {{#user.industries}}
-                                        <a href="{{.}}" class="text-white"><i class="icofont icofont-{{.}} px-2 lis-bg5 py-2 lis-rounded-circle-50 lis-f-14"></i></a>
+                                        <a href="{{.}}" class="text-white" data-toggle="tooltip" data-placement="bottom" title="{{.}}"><i class="icofont icofont-{{.}} px-2 lis-bg5 py-2 lis-rounded-circle-50 lis-f-14"></i></a>
                                         {{/user.industries}}
 
-                                        <a href="#" class="lis-id-info lis-light p-2 lis-rounded-circle-50 lis-f-14">1 More...</a>
+                                        <!-- <a href="#" class="lis-id-info lis-light p-2 lis-rounded-circle-50 lis-f-14">1 More...</a> -->
                                     </div>
                                     <div class="float-none float-lg-right mt-1">
-                                        <a href="#" class="lis-light lis-f-14"><i class="fa fa-envelope-o lis-id-info  lis-rounded-circle-50 text-center"></i></a>
-                                        <a href="#" class="lis-light lis-f-14"><i class="fa fa-heart-o lis-id-info  lis-rounded-circle-50 text-center"></i></a>
+                                        <a href="mailto:{{user.email}}" class="lis-light lis-f-14"><i class="fa fa-envelope-o lis-id-info  lis-rounded-circle-50 text-center"></i></a>
                                         <a href="#" class="lis-green-light text-white text-white p-2 lis-rounded-circle-50 lis-f-14 lis-line-height-2"><i class="fa fa-star"></i> 4.0</a>
                                     </div>
                                 </div>
@@ -298,6 +362,17 @@
 
         <script type="text/javascript">
             $(function(){
+                $('#profile-state option').each(function () {
+                    if ( $(this).val() === "{{user.state}}") {
+                        $(this).attr('selected', true);
+                    }
+                })
+
+                var industries = "{{user.industries}}".split(',');
+                $('#industries input').each(function () {
+                    if (industries.indexOf($(this).val()) > -1) $(this).attr('checked', true);
+                })
+
                 var commitUpdates = function(updatedProfile, completion){
                     $.ajax({
                         url : '/auth/update',
@@ -378,6 +453,8 @@
                         firstName: $('#profile-first-name').val().trim(),
                         lastName: $('#profile-last-name').val().trim(),
                         username: $('#profile-username').val().trim(),
+                        state: $('#profile-state').val(),
+                        city: $('#profile-city').val().trim(),
                         bio: $('#profile-bio').val().trim(),
                         id: $('#profile-id').val()
                     }
