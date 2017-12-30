@@ -1024,7 +1024,7 @@ textarea.form-control {
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-top: 16px;
-  min-height: 80px;
+  height: 90px;
 }
 #login li {
   display: inline-block;
