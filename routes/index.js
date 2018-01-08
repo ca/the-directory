@@ -80,6 +80,25 @@ router.get('/dashboard', (req, res) => {
 	})
 })
 
+router.get('/dashboard/add-listing', (req, res) => {
+	if (req.vertexSession == null) {
+		res.redirect('/error?message='+USER_NOT_LOGGED_IN)
+		return
+	}
+	if (req.vertexSession.user == null) {
+		res.redirect('/error?message='+USER_NOT_LOGGED_IN)
+		return
+	}
+
+	controllers.user.getById(req.vertexSession.user.id)
+	.then(data => {
+		res.render('add-listing', {user: data})
+	})
+	.catch(err => {
+		res.redirect('/error?message='+err.message)
+	})
+})
+
 
 router.get('/profiles', (req, res) => {
 	controllers.user.get(req.query)
