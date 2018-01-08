@@ -1497,3 +1497,15 @@ textarea.form-control {
     width: 100%; }
   #clockdiv .lis-timer div:after {
     display: none; } }
+
+#logo-image img,
+#cover-image img,
+#gallery-images img {
+    display: inline-block;
+}
+#logo-image .form-control,
+#cover-image .form-control,
+#gallery-images .form-control {
+    display: inline-block;
+    width: auto;
+}

@@ -39,292 +39,263 @@
 
                         <div class="card lis-brd-light wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <div class="card-body p-0">
-                                <!-- Industries & Tags -->
-                                <div class="row p-4">
-                                    <div class="col-12 col-sm-12 mb-3">
-                                        <h6 class="lis-font-weight-500"><i class="fa fa-tag pr-2 lis-f-14"></i>  Industries &amp; Tags</h6>
-                                    </div>
-                                    <div class="col-12 col-sm-12">
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label">Industries</label>
-                                            <div class="col-12 col-md-10">
-                                                <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="inlineFormCustomSelect">
-                                                    <option selected>Select Industry</option>
-                                                    <option value="1">Business</option>
-                                                    <option value="2">Technology</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                            </div>
+                                <form method="post" action="/api/listing">
+                                    <!-- Industries & Tags -->
+                                    <div class="row p-4">
+                                        <div class="col-12 col-sm-12 mb-3">
+                                            <h6 class="lis-font-weight-500"><i class="fa fa-tag pr-2 lis-f-14"></i>  Industries &amp; Tags</h6>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label">Tags(optional)</label>
-                                            <div class="col-12 col-md-10">
-                                                <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="inlineFormCustomSelect">
-                                                    <option selected>Add Tag</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
+                                        <div class="col-12 col-sm-12">
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-2 col-form-label">Industries</label>
+                                                <div class="col-12 col-md-10">
+                                                    <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="industries" name="industries">
+                                                        <option selected>Select Industry</option>
+                                                        <option value="1">Business</option>
+                                                        <option value="2">Technology</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-2 col-form-label">Tags (optional)</label>
+                                                <div class="col-12 col-md-10">
+                                                    <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="tags" name="tags">
+                                                        <option selected>Add Tag</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                                    </div>
-                                </div>
-                                <hr/>
-                                <!-- Name & Description -->
-                                <div class="row p-4">
-                                    <div class="col-12 col-sm-12 mb-3">
-                                        <h6 class="lis-font-weight-500"><i class="fa fa-align-left pr-2 lis-f-14"></i>  Name &amp; Description </h6>
-                                    </div>
-                                    <div class="col-12 col-sm-12">
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label">Title</label>
-                                            <div class="col-12 col-md-10">
-                                                <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Your listing name" value="" id="example-text-input">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label">Tagline</label>
-                                            <div class="col-12 col-md-10">
-                                                <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Say something catchy!" value="" id="example-text-input">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label">Description</label>
-                                            <div class="col-12 col-md-10">
-                                                <textarea class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Type listing description"></textarea>
-                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <hr/>
-                                <!-- Images -->
-                                <div class="row p-4">
-                                    <div class="col-12 col-sm-12 mb-3">
-                                        <h6 class="lis-font-weight-500"><i class="fa fa-file-image-o pr-2 lis-f-14"></i> Images </h6>
-                                    </div>
-                                    <div class="col-12 col-sm-12">
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Logo</label>
-                                            <div class="col-12 col-md-9">
-                                                <input class="form-control border-0"  type="file"  id="example-text-input">
-                                            </div>
+                                    <hr/>
+                                    <!-- Name & Description -->
+                                    <div class="row p-4">
+                                        <div class="col-12 col-sm-12 mb-3">
+                                            <h6 class="lis-font-weight-500"><i class="fa fa-align-left pr-2 lis-f-14"></i>  Name &amp; Description </h6>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Cover Image</label>
-                                            <div class="col-12 col-md-9">
-                                                <input class="form-control border-0" type="file"  id="example-text-input">
+                                        <div class="col-12 col-sm-12">
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-2 col-form-label">Title</label>
+                                                <div class="col-12 col-md-10">
+                                                    <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Your listing name" value="" id="title" name="title">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Gallery Images(optional)</label>
-                                            <div class="col-12 col-md-9">
-                                                <input class="form-control border-0" type="file"  id="example-text-input">
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-2 col-form-label">Tagline</label>
+                                                <div class="col-12 col-md-10">
+                                                    <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Say something catchy!" value="" id="tagling" name="tagline">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-2 col-form-label">Description</label>
+                                                <div class="col-12 col-md-10">
+                                                    <textarea class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Type listing description" id="description" name="description"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <hr/>
-                                <!-- Contact Information -->
-                                <div class="row p-4">
-                                    <div class="col-12 col-sm-12 mb-3">
-                                        <h6 class="lis-font-weight-500"><i class="fa fa-info-circle pr-2 lis-f-14"></i>  Contact Information </h6>
+                                    <hr/>
+                                    <!-- Images -->
+                                    <div class="row p-4">
+                                        <div class="col-12 col-sm-12 mb-3">
+                                            <h6 class="lis-font-weight-500"><i class="fa fa-file-image-o pr-2 lis-f-14"></i> Images </h6>
+                                        </div>
+                                        <div class="col-12 col-sm-12">
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-3 col-form-label">Logo</label>
+                                                <div class="col-12 col-md-9" id="logo-image">
+                                                    <input class="form-control border-0"  type="file"  name="logo" onclick="_uploadPhoto(event)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-3 col-form-label">Cover Image</label>
+                                                <div class="col-12 col-md-9" id="cover-image">
+                                                    <input class="form-control border-0" type="file" name="cover-image" onclick="_uploadPhoto(event)">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-3 col-form-label">Gallery Images(optional)</label>
+                                                <div class="col-12 col-md-9" id="gallery-images">
+                                                    <input class="form-control border-0" type="file" name="gallery" onclick="_uploadPhoto(event)">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-12 col-sm-12">
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Email</label>
-                                            <div class="col-12 col-md-9">
-                                                <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Your email address" type="text" value="" id="example-text-input">
-                                            </div>
+                                    <hr/>
+                                    <!-- Contact Information -->
+                                    <div class="row p-4">
+                                        <div class="col-12 col-sm-12 mb-3">
+                                            <h6 class="lis-font-weight-500"><i class="fa fa-info-circle pr-2 lis-f-14"></i>  Contact Information </h6>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Phone number(optional)</label>
-                                            <div class="col-12 col-md-9">
-                                                <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Your phone number" value="" id="example-text-input">
+                                        <div class="col-12 col-sm-12">
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-3 col-form-label">Email</label>
+                                                <div class="col-12 col-md-9">
+                                                    <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Your email address" type="text" value="" id="email" name="email">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-3 col-form-label">Website(optional)</label>
-                                            <div class="col-12 col-md-9">
-                                                <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Your website address" value="" id="example-text-input">
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-3 col-form-label">Phone number (optional)</label>
+                                                <div class="col-12 col-md-9">
+                                                    <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Your phone number" value="" id="phone" name="phone">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-3 col-form-label">Website (optional)</label>
+                                                <div class="col-12 col-md-9">
+                                                    <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Your website address" value="" id="website" name="website">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <hr/>
-                                <!-- Social -->
-                                <div class="row p-4">
-                                    <div class="col-12 col-sm-12 mb-3">
-                                        <h6 class="lis-font-weight-500"><i class="fa fa-share-alt pr-2 lis-f-14"></i>  Social</h6>
-                                    </div>
-                                    <div class="col-12 col-sm-12 social-information">
-                                        <div class="form-group row">
-                                            <div class="col-12 col-md-5">
-                                                <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="inlineFormCustomSelect">
-                                                    <option value="1">Twitter</option>
-                                                    <option value="2">Facebook</option>
-                                                    <option value="3">Pinterest</option>
-                                                    <option value="3">Tumblr</option>
-                                                </select>
+                                    <hr/>
+                                    <!-- Social -->
+                                    <div class="row p-4">
+                                        <div class="col-12 col-sm-12 mb-3">
+                                            <h6 class="lis-font-weight-500"><i class="fa fa-share-alt pr-2 lis-f-14"></i>  Social</h6>
+                                        </div>
+                                        <div class="col-12 col-sm-12 social-information">
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-2 col-form-label">Twitter</label>
+                                                <div class="col-12 col-md-9">
+                                                    <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Enter url..." type="text" value="" id="twitter" name="twitter">
+                                                </div>
+                                                <div class="col-12 col-md-1">
+                                                    <a href="#" class="btn btn-primary trash"><i class="fa fa-trash  lis-f-14"></i></a>
+                                                </div>
                                             </div>
-                                            <div class="col-12 col-md-6">
-                                                <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Enter url..." type="text" value="" id="example-text-input">
-                                            </div>
-                                            <div class="col-12 col-md-1">
-                                                <a href="#" class="btn btn-primary trash"><i class="fa fa-trash  lis-f-14"></i></a>
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-2 col-form-label">Facebook</label>
+                                                <div class="col-12 col-md-9">
+                                                    <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Enter url..." type="text" value="" id="facebook" name="facebook">
+                                                </div>
+                                                <div class="col-12 col-md-1">
+                                                    <a href="#" class="btn btn-primary trash"><i class="fa fa-trash  lis-f-14"></i></a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-12 col-md-5">
+                                    </div>
+                                    <hr/>
+                                    <!-- Categories -->
+                                    <!-- <div class="row p-4">
+                                        <div class="col-12 col-sm-12 mb-3">
+                                            <h6 class="lis-font-weight-500"><i class="fa fa-link pr-2 lis-f-14"></i>  Categories</h6>
+                                        </div>
+                                        <div class="col-12 col-sm-12 social-information">
+                                            <div class="form-group row">
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Car Parking
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Accepted Bank Cards
+                                                        <input type="checkbox" checked="checked">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Wheelchair Accessible
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Smoking Allowed
+                                                        <input type="checkbox" checked="checked">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Events
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Good for Kids
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Wireless Internet
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Friendly Workspace
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Outdoor Seating
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Elevator in Building
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Street Parking
+                                                        <input type="checkbox">
+                                                        <span class="checkmark"></span>
+                                                    </label>
 
-                                                <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="inlineFormCustomSelect">
-                                                    <option value="3">Pinterest</option>
-                                                    <option value="1">Twitter</option>
-                                                    <option value="2">Facebook</option>                                                    
-                                                    <option value="3">Tumblr</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Enter url..." type="text" value="" id="example-text-input">
-                                            </div>
-                                            <div class="col-12 col-md-1">
-                                                <a href="#" class="btn btn-primary trash"><i class="fa fa-trash  lis-f-14"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-12 col-md-5">
-
-                                                <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="inlineFormCustomSelect">
-                                                    <option value="3">Tumblr</option>
-                                                    <option value="1">Twitter</option>
-                                                    <option value="2">Facebook</option>
-                                                    <option value="3">Pinterest</option>
-
-                                                </select>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="Enter url..." type="text" value="" id="example-text-input">
-                                            </div>
-                                            <div class="col-12 col-md-1">
-                                                <a href="#" class="btn btn-primary trash"><i class="fa fa-trash  lis-f-14"></i></a>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-12 col-sm-12 mb-3">
-                                        <a  href="#" class="add-row btn btn-primary"><i class="fa fa-plus pr-2 lis-f-14"></i>  Add More </a>
-                                    </div>
-                                </div>
-                                <hr/>
-                                <!-- Categories -->
-                                <div class="row p-4">
-                                    <div class="col-12 col-sm-12 mb-3">
-                                        <h6 class="lis-font-weight-500"><i class="fa fa-link pr-2 lis-f-14"></i>  Categories</h6>
-                                    </div>
-                                    <div class="col-12 col-sm-12 social-information">
-                                        <div class="form-group row">
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Car Parking
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Accepted Bank Cards
-                                                    <input type="checkbox" checked="checked">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Wheelchair Accessible
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Smoking Allowed
-                                                    <input type="checkbox" checked="checked">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Events
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Good for Kids
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Wireless Internet
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Friendly Workspace
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Outdoor Seating
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Elevator in Building
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Street Parking
-                                                    <input type="checkbox">
-                                                    <span class="checkmark"></span>
-                                                </label>
-
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <label class="custom-checkbox">Takes Reservations
-                                                    <input type="checkbox" checked="checked">
-                                                    <span class="checkmark"></span>
-                                                </label>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label class="custom-checkbox">Takes Reservations
+                                                        <input type="checkbox" checked="checked">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <hr/>
-                                <!-- Location -->
-                                <div class="row p-4">
-                                    <div class="col-12 col-sm-12 mb-3">
-                                        <h6 class="lis-font-weight-500"><i class="fa fa-map-o pr-2 lis-f-14"></i>  Location </h6>
-                                    </div>
-                                    <div class="col-12 col-sm-12">
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label">Address</label>
-                                            <div class="col-12 col-md-10">
-                                                <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="e.g. 2438 Progress Way, Donnelly, MN, 56235" type="text" value=""  id="us2-address" >
+                                    <hr/> -->
+                                    <!-- Location -->
+                                    <div class="row p-4">
+                                        <div class="col-12 col-sm-12 mb-3">
+                                            <h6 class="lis-font-weight-500"><i class="fa fa-map-o pr-2 lis-f-14"></i>  Location </h6>
+                                        </div>
+                                        <div class="col-12 col-sm-12">
+                                            <div class="form-group row">
+                                                <label for="example-text-input" class="col-12 col-md-2 col-form-label">Address</label>
+                                                <div class="col-12 col-md-10">
+                                                    <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" placeholder="e.g. 2438 Progress Way, Donnelly, MN, 56235" type="text" value=""  id="address" name="address">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-12"> <a href="#" class="btn btn-primary btn-default mt-3"> Save &amp; Preview</a> </div>
-                                </div>
+                                    <hr/>
+                                    <!-- Submit -->
+                                    <div class="row p-4">
+                                        <div class="col-12 col-sm-12">
+                                            <button type="submit" class="btn btn-primary btn-default mt-3"> Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </section>
@@ -332,5 +303,29 @@
         {{>footer}}
         {{>modals}}
         {{>imports}}
+        <script type="text/javascript">
+            var turbo = Turbo({site_id: '5a3a9e6f474aba0014925c08'})
+            function _uploadPhoto (event) {
+              event.preventDefault()
+              turbo.uploadFile((err, data) => {
+                if (err){
+                  alert('File Upload Error: ' + err.message)
+                  return
+                }
+
+                if (data.confirmation != 'success'){
+                  alert('Error: ' + data.message)
+                  return
+                }
+
+                var file = data.result;
+                // Set the image so the user knows it's uploaded
+                $(event.target).parent().prepend('<img src="'+file.url+'=s80-c">')
+                
+                // Set the input value so the url is submitted
+                $(event.target).attr('value', file.url)
+              })
+            }
+        </script>
     </body>
 </html>
