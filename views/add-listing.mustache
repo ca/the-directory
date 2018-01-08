@@ -81,7 +81,7 @@
                                             <div class="form-group row">
                                                 <label for="example-text-input" class="col-12 col-md-2 col-form-label">Title</label>
                                                 <div class="col-12 col-md-10">
-                                                    <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Your listing name" value="" id="title" name="title">
+                                                    <input class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Your listing name" value="" id="title" name="name">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -105,22 +105,24 @@
                                             <h6 class="lis-font-weight-500"><i class="fa fa-file-image-o pr-2 lis-f-14"></i> Images </h6>
                                         </div>
                                         <div class="col-12 col-sm-12">
-                                            <div class="form-group row">
+                                            <div class="form-group row logo-upload">
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Logo</label>
                                                 <div class="col-12 col-md-9" id="logo-image">
-                                                    <input class="form-control border-0"  type="file"  name="logo" onclick="_uploadPhoto(event)">
+                                                    <img src="">
+                                                    <input class="form-control border-0"  type="file"  name="logo" id="logo-uploader" onclick="_uploadLogo(event)">
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            <div class="form-group row cover-upload">
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Cover Image</label>
                                                 <div class="col-12 col-md-9" id="cover-image">
-                                                    <input class="form-control border-0" type="file" name="cover-image" onclick="_uploadPhoto(event)">
+                                                    <img src="">
+                                                    <input class="form-control border-0" type="file" name="cover-image" id="cover-image-uploader" onclick="_uploadCover(event)">
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="example-text-input" class="col-12 col-md-3 col-form-label">Gallery Images(optional)</label>
+                                            <div class="form-group row gallery-upload">
+                                                <label for="example-text-input" class="col-12 col-md-3 col-form-label">Gallery Images (optional)</label>
                                                 <div class="col-12 col-md-9" id="gallery-images">
-                                                    <input class="form-control border-0" type="file" name="gallery" onclick="_uploadPhoto(event)">
+                                                    <input class="form-control border-0" type="file" name="gallery" id="gallery-uploader" onclick="_uploadGallery(event)">
                                                 </div>
                                             </div>
                                         </div>
@@ -305,26 +307,71 @@
         {{>imports}}
         <script type="text/javascript">
             var turbo = Turbo({site_id: '5a3a9e6f474aba0014925c08'})
-            function _uploadPhoto (event) {
-              event.preventDefault()
-              turbo.uploadFile((err, data) => {
-                if (err){
-                  alert('File Upload Error: ' + err.message)
-                  return
-                }
+            function _uploadLogo (event) {
+                event.preventDefault()
+                turbo.uploadFile(function (err, data) {
+                    if (err){
+                      alert('File Upload Error: ' + err.message)
+                      return
+                    }
 
-                if (data.confirmation != 'success'){
-                  alert('Error: ' + data.message)
-                  return
-                }
+                    if (data.confirmation != 'success'){
+                      alert('Error: ' + data.message)
+                      return
+                    }
 
-                var file = data.result;
-                // Set the image so the user knows it's uploaded
-                $(event.target).parent().prepend('<img src="'+file.url+'=s80-c">')
-                
-                // Set the input value so the url is submitted
-                $(event.target).attr('value', file.url)
-              })
+                    var file = data.result;
+                    // Set the image so the user knows it's uploaded
+                    // $(event.target).parent().prepend("TEST");
+                    $('#logo-image img').attr('src', file.url+'=s80-c')
+                    
+                    // Set the input value so the url is submitted
+                    $('#logo-uploader').attr('value', file.url)
+                })
+            }
+
+            function _uploadCover (event) {
+                event.preventDefault()
+                turbo.uploadFile(function (err, data) {
+                    if (err){
+                      alert('File Upload Error: ' + err.message)
+                      return
+                    }
+
+                    if (data.confirmation != 'success'){
+                      alert('Error: ' + data.message)
+                      return
+                    }
+
+                    var file = data.result;
+                    // Set the image so the user knows it's uploaded
+                    $('#cover-image img').attr('src', file.url+'=s80-c')
+                    
+                    // Set the input value so the url is submitted
+                    $('#cover-image-uploader').attr('value', file.url)
+                })
+            }
+
+            function _uploadGallery (event) {
+                event.preventDefault()
+                turbo.uploadFile(function (err, data) {
+                    if (err){
+                      alert('File Upload Error: ' + err.message)
+                      return
+                    }
+
+                    if (data.confirmation != 'success'){
+                      alert('Error: ' + data.message)
+                      return
+                    }
+
+                    var file = data.result;
+                    // Set the image so the user knows it's uploaded
+                    $('#gallery-images').prepend('<img src="'+file.url+'=s80-c">')
+                    
+                    // Set the input value so the url is submitted
+                    $('#gallery-images').append('<input name="gallery[]" value="'+file.url+'" style="display:none">')
+                })
             }
         </script>
     </body>
