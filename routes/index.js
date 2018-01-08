@@ -158,7 +158,7 @@ router.get('/post/:slug', (req, res) => {
 router.get('/listings', (req, res) => {
 	controllers.listing.get(req.query)
 	.then(data => {
-		res.render('listings', {listings: data})
+		res.render('listings', { listings: data })
 	})
 	.catch(err => {
 		res.redirect('/error?message=' + err.message)

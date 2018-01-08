@@ -17,8 +17,8 @@
                 <div class="row wow fadeInUp">
                     <div class="col-12 col-sm-6">
                         <div class="page-title">
-                            <h2>Add Property Listing</h2>
-                            <p class="mb-0">Lorem ipsum dolor sit amet, ut latine</p>
+                            <h2>Add Listing</h2>
+                            <p class="mb-0">Add a new business to The Directory</p>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 text-left text-sm-right">
@@ -108,21 +108,21 @@
                                             <div class="form-group row logo-upload">
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Logo</label>
                                                 <div class="col-12 col-md-9" id="logo-image">
-                                                    <img src="">
-                                                    <button id="logo-uploader" class="btn btn-primary btn-default" onclick="_uploadLogo(event)">Upload Image</button>
+                                                    <img src="" id="li">
+                                                    <button type="button" id="logo-uploader" class="btn btn-primary btn-default">Upload Image</button>
                                                 </div>
                                             </div>
                                             <div class="form-group row cover-upload">
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Cover Image</label>
                                                 <div class="col-12 col-md-9" id="cover-image">
-                                                    <img src="">
-                                                    <button id="logo-uploader" class="btn btn-primary btn-default" onclick="_uploadCover(event)">Upload Image</button>
+                                                    <img src="" id="ci">
+                                                    <button type="button" id="cover-uploader" class="btn btn-primary btn-default">Upload Image</button>
                                                 </div>
                                             </div>
                                             <div class="form-group row gallery-upload">
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Gallery Images (optional)</label>
                                                 <div class="col-12 col-md-9" id="gallery-images">
-                                                    <button id="logo-uploader" class="btn btn-primary btn-default" onclick="_uploadGallery(event)">Upload Image</button>
+                                                    <button type="button" id="gallery-uploader" class="btn btn-primary btn-default">Upload Image</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -307,8 +307,7 @@
         {{>imports}}
         <script type="text/javascript">
             var turbo = Turbo({site_id: '5a3a9e6f474aba0014925c08'})
-            function _uploadLogo (event) {
-                event.preventDefault()
+            $('#logo-uploader').click(function () {
                 turbo.uploadFile(function (err, data) {
                     if (err){
                       alert('File Upload Error: ' + err.message)
@@ -328,10 +327,9 @@
                     // Set the input value so the url is submitted
                     $('#logo-image').append('<input name="logo" value="'+file.url+'" style="display:none">')
                 })
-            }
+            })
 
-            function _uploadCover (event) {
-                event.preventDefault()
+            $('#cover-uploader').click(function () {
                 turbo.uploadFile(function (err, data) {
                     if (err){
                       alert('File Upload Error: ' + err.message)
@@ -350,10 +348,9 @@
                     // Set the input value so the url is submitted
                     $('#cover-image').append('<input name="cover" value="'+file.url+'" style="display:none">')
                 })
-            }
+            })
 
-            function _uploadGallery (event) {
-                event.preventDefault()
+            $('#gallery-uploader').click(function () {
                 turbo.uploadFile(function (err, data) {
                     if (err){
                       alert('File Upload Error: ' + err.message)
@@ -372,7 +369,7 @@
                     // Set the input value so the url is submitted
                     $('#gallery-images').append('<input name="gallery[]" value="'+file.url+'" style="display:none">')
                 })
-            }
+            });
         </script>
     </body>
 </html>
