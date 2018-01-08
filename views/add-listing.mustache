@@ -43,17 +43,17 @@
                                     <!-- Industries & Tags -->
                                     <div class="row p-4">
                                         <div class="col-12 col-sm-12 mb-3">
-                                            <h6 class="lis-font-weight-500"><i class="fa fa-tag pr-2 lis-f-14"></i>  Industries &amp; Tags</h6>
+                                            <h6 class="lis-font-weight-500"><i class="fa fa-tag pr-2 lis-f-14"></i>  Industry &amp; Tags</h6>
                                         </div>
                                         <div class="col-12 col-sm-12">
                                             <div class="form-group row">
-                                                <label for="example-text-input" class="col-12 col-md-2 col-form-label">Industries</label>
+                                                <label for="example-text-input" class="col-12 col-md-2 col-form-label">Industry</label>
                                                 <div class="col-12 col-md-10">
-                                                    <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="industries" name="industries">
+                                                    <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="industry" name="industry">
                                                         <option selected>Select Industry</option>
-                                                        <option value="1">Business</option>
-                                                        <option value="2">Technology</option>
-                                                        <option value="3">Three</option>
+                                                        <option value="business">Business</option>
+                                                        <option value="technology">Technology</option>
+                                                        <option value="restaurant">Restaurant</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -109,20 +109,20 @@
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Logo</label>
                                                 <div class="col-12 col-md-9" id="logo-image">
                                                     <img src="">
-                                                    <input class="form-control border-0"  type="file"  name="logo" id="logo-uploader" onclick="_uploadLogo(event)">
+                                                    <button id="logo-uploader" class="btn btn-primary btn-default" onclick="_uploadLogo(event)">Upload Image</button>
                                                 </div>
                                             </div>
                                             <div class="form-group row cover-upload">
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Cover Image</label>
                                                 <div class="col-12 col-md-9" id="cover-image">
                                                     <img src="">
-                                                    <input class="form-control border-0" type="file" name="cover-image" id="cover-image-uploader" onclick="_uploadCover(event)">
+                                                    <button id="logo-uploader" class="btn btn-primary btn-default" onclick="_uploadCover(event)">Upload Image</button>
                                                 </div>
                                             </div>
                                             <div class="form-group row gallery-upload">
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Gallery Images (optional)</label>
                                                 <div class="col-12 col-md-9" id="gallery-images">
-                                                    <input class="form-control border-0" type="file" name="gallery" id="gallery-uploader" onclick="_uploadGallery(event)">
+                                                    <button id="logo-uploader" class="btn btn-primary btn-default" onclick="_uploadGallery(event)">Upload Image</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -326,7 +326,7 @@
                     $('#logo-image img').attr('src', file.url+'=s80-c')
                     
                     // Set the input value so the url is submitted
-                    $('#logo-uploader').attr('value', file.url)
+                    $('#logo-image').append('<input name="logo" value="'+file.url+'" style="display:none">')
                 })
             }
 
@@ -348,7 +348,7 @@
                     $('#cover-image img').attr('src', file.url+'=s80-c')
                     
                     // Set the input value so the url is submitted
-                    $('#cover-image-uploader').attr('value', file.url)
+                    $('#cover-image').append('<input name="cover" value="'+file.url+'" style="display:none">')
                 })
             }
 
