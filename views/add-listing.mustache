@@ -57,7 +57,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
+                                            <!-- <div class="form-group row">
                                                 <label for="example-text-input" class="col-12 col-md-2 col-form-label">Tags (optional)</label>
                                                 <div class="col-12 col-md-10">
                                                     <select class="form-control border-top-0 border-left-0 border-right-0 rounded-0" id="tags" name="tags">
@@ -67,7 +67,7 @@
                                                         <option value="3">Three</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                         </div>
                                     </div>
@@ -108,23 +108,23 @@
                                             <div class="form-group row logo-upload">
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Logo</label>
                                                 <div class="col-12 col-md-9" id="logo-image">
-                                                    <img src="" id="li">
+                                                    <img id="li">
                                                     <button type="button" id="logo-uploader" class="btn btn-primary btn-default">Upload Image</button>
                                                 </div>
                                             </div>
                                             <div class="form-group row cover-upload">
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Cover Image</label>
                                                 <div class="col-12 col-md-9" id="cover-image">
-                                                    <img src="" id="ci">
+                                                    <img id="ci">
                                                     <button type="button" id="cover-uploader" class="btn btn-primary btn-default">Upload Image</button>
                                                 </div>
                                             </div>
-                                            <div class="form-group row gallery-upload">
+                                            <!-- <div class="form-group row gallery-upload">
                                                 <label for="example-text-input" class="col-12 col-md-3 col-form-label">Gallery Images (optional)</label>
                                                 <div class="col-12 col-md-9" id="gallery-images">
                                                     <button type="button" id="gallery-uploader" class="btn btn-primary btn-default">Upload Image</button>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <hr/>
@@ -307,8 +307,13 @@
         {{>imports}}
         <script type="text/javascript">
             var turbo = Turbo({site_id: '5a3a9e6f474aba0014925c08'})
-            $('#logo-uploader').click(function () {
-                turbo.uploadFile(function (err, data) {
+            $('#logo-uploader').click(() => {
+                console.log('#LOGO')
+                $uploader = $('#li');
+                $name="logo";
+
+                turbo.uploadFile((err, data) => {
+                    console.log(this)
                     if (err){
                       alert('File Upload Error: ' + err.message)
                       return
@@ -322,15 +327,19 @@
                     var file = data.result;
                     // Set the image so the user knows it's uploaded
                     // $(event.target).parent().prepend("TEST");
-                    $('#logo-image img').attr('src', file.url+'=s80-c')
+                    $uploader.attr('src', file.url+'=s80-c')
                     
                     // Set the input value so the url is submitted
-                    $('#logo-image').append('<input name="logo" value="'+file.url+'" style="display:none">')
+                    $uploader.after('<input name="'+$name+'" value="'+file.url+'" style="display:none">')
                 })
             })
 
-            $('#cover-uploader').click(function () {
-                turbo.uploadFile(function (err, data) {
+            $('#cover-uploader').click(() => {
+                console.log('#COVER')
+                $uploader = $('#ci');
+                $name = "cover";
+                turbo.uploadFile((err, data) => {
+                    console.log('#COVER')
                     if (err){
                       alert('File Upload Error: ' + err.message)
                       return
@@ -343,33 +352,35 @@
 
                     var file = data.result;
                     // Set the image so the user knows it's uploaded
-                    $('#cover-image img').attr('src', file.url+'=s80-c')
+                    $uploader.attr('src', file.url+'=s80-c')
                     
                     // Set the input value so the url is submitted
-                    $('#cover-image').append('<input name="cover" value="'+file.url+'" style="display:none">')
+                    $uploader.after('<input name="'+$name+'" value="'+file.url+'" style="display:none">')
                 })
             })
 
-            $('#gallery-uploader').click(function () {
-                turbo.uploadFile(function (err, data) {
-                    if (err){
-                      alert('File Upload Error: ' + err.message)
-                      return
-                    }
+            // $('#gallery-uploader').click(() => {
+            //     console.log('#GALLERY')
+            //     turbo.uploadFile((err, data) => {
+            //         console.log('#GALLERY')
+            //         if (err){
+            //           alert('File Upload Error: ' + err.message)
+            //           return
+            //         }
 
-                    if (data.confirmation != 'success'){
-                      alert('Error: ' + data.message)
-                      return
-                    }
+            //         if (data.confirmation != 'success'){
+            //           alert('Error: ' + data.message)
+            //           return
+            //         }
 
-                    var file = data.result;
-                    // Set the image so the user knows it's uploaded
-                    $('#gallery-images').prepend('<img src="'+file.url+'=s80-c">')
+            //         var file = data.result;
+            //         // Set the image so the user knows it's uploaded
+            //         $('#gallery-images').prepend('<img src="'+file.url+'=s80-c">')
                     
-                    // Set the input value so the url is submitted
-                    $('#gallery-images').append('<input name="gallery[]" value="'+file.url+'" style="display:none">')
-                })
-            });
+            //         // Set the input value so the url is submitted
+            //         $('#gallery-images').append('<input name="gallery[]" value="'+file.url+'" style="display:none">')
+            //     })
+            // });
         </script>
     </body>
 </html>

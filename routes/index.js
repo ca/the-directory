@@ -100,17 +100,17 @@ router.get('/dashboard/add-listing', (req, res) => {
 })
 
 
-router.get('/profiles', (req, res) => {
+router.get('/mentors', (req, res) => {
 	controllers.user.get(req.query)
 	.then(data => {
-		res.render('profiles', {profiles: data})
+		res.render('mentors', {mentors: data})
 	})
 	.catch(err => {
 		res.redirect('/error?message=' + err.message)
 	})
 })
 
-router.get('/profile/:username', (req, res) => {
+router.get('/mentor/:username', (req, res) => {
 	controllers.user.get({username:req.params.username})
 	.then(data => {
 		if (data.length == 0){ // not found, throw error
