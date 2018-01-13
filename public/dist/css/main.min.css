@@ -1509,3 +1509,17 @@ textarea.form-control {
     display: inline-block;
     width: auto;
 }
+
+#explore-industries .post img {
+  object-fit: cover;
+  height: 225px;  
+}
+
+#explore-industries .post .rounded {
+  height: 225px;
+  overflow: hidden;
+}
+
+#add-listing {
+    background: #FFFFFA;
+}
