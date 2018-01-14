@@ -27,18 +27,17 @@ const staticPages = {
 router.get('/', (req, res) => {
 	turbo.pageData('home')
     .then(static => {
-
-
+    	console.log(process.env.LOGO)
     	controllers.user.get(req.query)
 		.then(mentors => {
 			if (req.vertexSession == null || req.vertexSession.user == null){
-				res.render(static.template, {static: static, mentors: mentors, user: null})
+				res.render(static.template, {static: static, env: process.env, mentors: mentors, user: null})
 				return
 			}
 
 	    	controllers.user.getById(req.vertexSession.user.id)
 			.then(user => {
-				res.render(static.template, {static: static, mentors: mentors, user: user})
+				res.render(static.template, {static: static, env: process.env, mentors: mentors, user: user})
 			})
 			.catch(err => {
 				res.redirect('/error?message=' + err.message)

@@ -54,7 +54,7 @@
             <div class="container-fluid">
                 <div class="row portfolio-box">
                     <div class="post col-md-4 text-center wow fadeInUp mb-4">
-                        <a href="#" class="text-white">
+                        <a href="/mentors?industries=technology" class="text-white">
                             <div class="text-white lis-relative lis-masonry rounded"> <img src="https://images.unsplash.com/photo-1504890001746-a9a68eda46e2?auto=format&fit=crop&w=1879&q=80" alt="" class="img-fluid rounded w-100">
                                 <div class="overlay rounded"></div>
                                 <div class="lis-absolute lis-right-0 lis-left-0 lis-top-0 w-100 h-100">
@@ -69,7 +69,7 @@
                         </a>
                     </div>
                     <div class="post col-md-4 text-center wow fadeInUp mb-4">
-                        <a href="#" class="text-white">
+                        <a href="/mentors?industries=law" class="text-white">
                             <div class="text-white lis-relative lis-masonry rounded"> <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1950&q=80" alt="" class="img-fluid rounded w-100">
                                 <div class="overlay rounded"></div>
                                 <div class="lis-absolute lis-right-0 lis-left-0 lis-top-0 w-100 h-100">
@@ -84,7 +84,7 @@
                         </a>
                     </div>
                     <div class="post col-md-4 text-center wow fadeInUp mb-4">
-                        <a href="#" class="text-white">
+                        <a href="/mentors?industries=business" class="text-white">
                             <div class="text-white lis-relative lis-masonry rounded"> <img src="https://cdn.turbo360-vertex.com/lister-startup-ij64jh/public/dist/images/lincoln.jpg" alt="" class="img-fluid rounded w-100">
                                 <div class="overlay rounded"></div>
                                 <div class="lis-absolute lis-right-0 lis-left-0 lis-top-0 w-100 h-100">
@@ -99,7 +99,7 @@
                         </a>
                     </div>
                     <div class="post col-md-4 text-center wow fadeInUp mb-4 mb-md-0">
-                        <a href="#" class="text-white">
+                        <a href="/mentors?industries=sports" class="text-white">
                             <div class="text-white lis-relative lis-masonry rounded"> <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=2900&q=80" alt="" class="img-fluid rounded w-100">
                                 <div class="overlay rounded"></div>
                                 <div class="lis-absolute lis-right-0 lis-left-0 lis-top-0 w-100 h-100">
@@ -114,7 +114,7 @@
                         </a>
                     </div>
                     <div class="post col-md-4 text-center wow fadeInUp mb-4 mb-md-0">
-                        <a href="#" class="text-white">
+                        <a href="/mentors?industries=military" class="text-white">
                             <div class="text-white lis-relative lis-masonry rounded"> <img src="https://images.unsplash.com/photo-1482649671545-bc53dcf1ad7c?auto=format&fit=crop&w=1950&q=80" alt="" class="img-fluid rounded w-100">
                                 <div class="overlay rounded"></div>
                                 <div class="lis-absolute lis-right-0 lis-left-0 lis-top-0 w-100 h-100">
@@ -129,7 +129,7 @@
                         </a>
                     </div>
                     <div class="post col-md-4 text-center wow fadeInUp mb-4 mb-md-0">
-                        <a href="#" class="text-white">
+                        <a href="/mentors?industries=government" class="text-white">
                             <div class="text-white lis-relative lis-masonry rounded"> <img src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?auto=format&fit=crop&w=1878&q=80" alt="" class="img-fluid rounded w-100">
                                 <div class="overlay rounded"></div>
                                 <div class="lis-absolute lis-right-0 lis-left-0 lis-top-0 w-100 h-100">
@@ -177,7 +177,7 @@
                                             <h6 class="mb-0 lis-font-weight-600" style="text-transform: capitalize;">
                                                 {{firstName}} {{lastName}}
                                             </h6>
-                                            <span>@{{username}}</span>
+                                            <span>{{#hourlyRate}}${{hourlyRate}}/hour{{/hourlyRate}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -198,7 +198,7 @@
                                 <div class="clearfix">
                                     <div class="float-none float-lg-left mb-3 mb-lg-0 mt-1">
                                         {{#industries}}
-                                        <a href="{{.}}" class="text-white"><i class="icofont icofont-{{.}} px-2 lis-bg5 py-2 lis-rounded-circle-50 lis-f-14"></i></a>
+                                        <a href="/mentors?industries={{.}}" class="text-white"><i class="icofont icofont-{{.}} px-2 lis-bg5 py-2 lis-rounded-circle-50 lis-f-14"></i></a>
                                         {{/industries}}
                                     </div>
                                     <div class="float-none float-lg-right mt-1">
@@ -221,27 +221,27 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-10 text-center">
                         <div class="heading pb-4">
-                            <h2>How Does It Work</h2>
-                            <h5 class="font-weight-normal lis-light">Discover &amp; connect with top-rated local businesses</h5> </div>
+                            <h2>{{ static.cta }}</h2>
+                            <h5 class="font-weight-normal lis-light">{{ static.cta-tagline }}</h5> </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-4 text-center wow fadeInUp mb-5 mb-md-0">
                         <div class="icon-box box-line box-line-dotted1 lis-relative"> <img src="https://cdn.turbo360-vertex.com/lister-startup-ij64jh/public/dist/images/icon-1.png" alt="" class="img-fluid mb-4 z-index-99  lis-relative" />
-                            <h5>Find an Industry</h5>
-                            <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+                            <h5>{{ static.step-one }}</h5>
+                            <p>{{ static.step-one-description }}</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-4 text-center wow fadeInUp mb-5 mb-md-0">
                         <div class="icon-box box-line box-line-dotted2 lis-relative"> <img src="https://cdn.turbo360-vertex.com/lister-startup-ij64jh/public/dist/images/icon-2.png" alt="" class="img-fluid mb-4 z-index-99  lis-relative" />
-                            <h5>Choose a Category</h5>
-                            <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+                            <h5>{{ static.step-two }}</h5>
+                            <p>{{ static.step-two-description }}</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-4 text-center wow fadeInUp mb-5 mb-md-0">
                         <div class="icon-box"> <img src="https://cdn.turbo360-vertex.com/lister-startup-ij64jh/public/dist/images/icon-3.png" alt="" class="img-fluid mb-4 z-index-99  lis-relative" />
-                            <h5>Connect with Mentors</h5>
-                            <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+                            <h5>{{ static.step-three }}</h5>
+                            <p>{{ static.step-three-description }}</p>
                         </div>
                     </div>
                 </div>
@@ -257,27 +257,11 @@
                         <div id="testimonial" class="owl-carousel">
                             <div class="item text-center">
                                 <div class="quote"><img src="https://cdn.turbo360-vertex.com/lister-startup-ij64jh/public/dist/images/quote.png" alt="" class="img-fluid mx-auto lis-relative" /></div>
-                                <h5>"Amazing Support"</h5>
-                                <p class="lis-line-height-2 lis-dark">Really, this is perfect! Very clean theme, beautiful, minimal but complete. It has everything I need. Easy to edit and work with, very well coded and simple interface.</p>
+                                <h5>"{{static.testimonial-title}}"</h5>
+                                <p class="lis-line-height-2 lis-dark">{{static.testimonial-body}}</p>
                                 <div class="author">
-                                    <A href="#"><img src="https://cdn.turbo360-vertex.com/lister-startup-ij64jh/public/dist/images/author.jpg" alt="" class="img-fluid mx-auto rounded-circle py-3" /></A>
-                                    <h5 class="lis-primary mb-2">Lucas Andrade</h5> <span>Bodega Garage</span> </div>
-                            </div>
-                            <div class="item text-center">
-                                <div class="quote"><img src="https://cdn.turbo360-vertex.com/lister-startup-ij64jh/public/dist/images/quote.png" alt="" class="img-fluid mx-auto lis-relative" /></div>
-                                <h5>"Amazing Support"</h5>
-                                <p class="lis-line-height-2 lis-dark">Really, this is perfect! Very clean theme, beautiful, minimal but complete. It has everything I need. Easy to edit and work with, very well coded and simple interface.</p>
-                                <div class="author">
-                                    <A href="#"><img src="https://cdn.turbo360-vertex.com/lister-startup-ij64jh/public/dist/images/author2.jpg" alt="" class="img-fluid mx-auto rounded-circle py-3" /></A>
-                                    <h5 class="lis-primary mb-2">Marjaney Tailor</h5> <span>Bodega Garage</span> </div>
-                            </div>
-                            <div class="item text-center">
-                                <div class="quote"><img src="https://cdn.turbo360-vertex.com/lister-startup-ij64jh/public/dist/images/quote.png" alt="" class="img-fluid mx-auto lis-relative" /></div>
-                                <h5>"Amazing Support"</h5>
-                                <p class="lis-line-height-2 lis-dark">Really, this is perfect! Very clean theme, beautiful, minimal but complete. It has everything I need. Easy to edit and work with, very well coded and simple interface.</p>
-                                <div class="author">
-                                    <A href="#"><img src="https://cdn.turbo360-vertex.com/lister-startup-ij64jh/public/dist/images/author3.jpg" alt="" class="img-fluid mx-auto rounded-circle py-3" /></A>
-                                    <h5 class="lis-primary mb-2">Abelson Dixon</h5> <span>Bodega Garage</span> </div>
+                                    <A href="#"><img src="{{static.testimonial-image}}" alt="" class="img-fluid mx-auto rounded-circle py-3" /></A>
+                                    <h5 class="lis-primary mb-2">{{static.testimonial-name}}</h5> <span>{{static.testimonial-company}}</span> </div>
                             </div>
                         </div>
                     </div>
@@ -292,7 +276,7 @@
                    <div class="row justify-content-center">
                     <div class="col-12 col-md-10 text-center">
                         <div class="heading pb-4">
-                            <h2>Blog</h2>
+                            <h2>News</h2>
                             <h5 class="font-weight-normal lis-light">Discover &amp; connect with top-rated local businesses</h5>
                         </div>
                     </div>

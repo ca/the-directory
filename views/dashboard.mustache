@@ -95,7 +95,7 @@
                                         <div class="form-group row">
                                             <label for="example-text-input" class="col-12 col-md-2 col-form-label input-label">First Name</label>
                                             <div class="col-12 col-md-10">
-                                                <input autocomplete="first name" id="profile-first-name" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="First Name" value="{{user.firstName}}" >
+                                                <input autocomplete="first name" id="profile-first-name" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="First Name" value="{{user.firstName}}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -108,6 +108,14 @@
                                             <label for="example-text-input" class="col-12 col-md-2 col-form-label input-label">Username</label>
                                             <div class="col-12 col-md-10">
                                                 <input id="profile-username" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="text" placeholder="Username" value="{{user.username}}" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="example-text-input" class="col-12 col-md-2 col-form-label input-label">Hourly Rate</label>
+                                            <!-- <div></div> -->
+                                            <label class="col-12 col-md-1 col-form-label input-label" style="text-align: right">$</label>
+                                            <div class="col-12 col-md-9">
+                                                <input autocomplete="hourly rate" id="profile-hourly-rate" class="form-control border-top-0 border-left-0 border-right-0 rounded-0" type="number" placeholder="Hourly Rate" value="{{user.hourlyRate}}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -453,6 +461,7 @@
                         firstName: $('#profile-first-name').val().trim(),
                         lastName: $('#profile-last-name').val().trim(),
                         username: $('#profile-username').val().trim(),
+                        hourlyRate: $('#profile-hourly-rate').val().trim(),
                         state: $('#profile-state').val(),
                         city: $('#profile-city').val().trim(),
                         bio: $('#profile-bio').val().trim(),

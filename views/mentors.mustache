@@ -59,7 +59,7 @@
                                                         <h6 class="mb-0 lis-font-weight-600" style="text-transform: capitalize;">
                                                             {{firstName}} {{lastName}}
                                                         </h6>
-                                                        <span>@{{username}}</span>
+                                                        <span>${{hourlyRate}}/hour</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -80,7 +80,7 @@
                                             <div class="clearfix">
                                                 <div class="float-none float-lg-left mb-3 mb-lg-0 mt-1">
                                                     {{#industries}}
-                                                    <a href="{{.}}" class="text-white"><i class="icofont icofont-{{.}} px-2 lis-bg5 py-2 lis-rounded-circle-50 lis-f-14"></i></a>
+                                                    <a href="/mentors?industries={{.}}" class="text-white"><i class="icofont icofont-{{.}} px-2 lis-bg5 py-2 lis-rounded-circle-50 lis-f-14"></i></a>
                                                     {{/industries}}
                                                 </div>
                                                 <div class="float-none float-lg-right mt-1">
