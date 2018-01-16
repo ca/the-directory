@@ -102,7 +102,7 @@ router.get('/dashboard/add-listing', (req, res) => {
 router.get('/mentors', (req, res) => {
 	controllers.user.get(req.query)
 	.then(data => {
-		res.render('mentors', {mentors: data})
+		res.render('mentors', { mentors: data, jsmentors: JSON.stringify(data) })
 	})
 	.catch(err => {
 		res.redirect('/error?message=' + err.message)

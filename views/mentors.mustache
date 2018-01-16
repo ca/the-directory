@@ -59,7 +59,7 @@
                                                         <h6 class="mb-0 lis-font-weight-600" style="text-transform: capitalize;">
                                                             {{firstName}} {{lastName}}
                                                         </h6>
-                                                        <span>${{hourlyRate}}/hour</span>
+                                                        <span>{{#hourlyRate}}${{hourlyRate}}/hour{{/hourlyRate}}</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -108,6 +108,7 @@
         {{>imports}}
         <script src="/dist/js/data.json"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjsIpyXFoB7_5_E2DgO_-CTDMHKM0cW4I&sensor=false&callback=initialize"></script>
+        <script type="text/javascript">let mentors = {{{ jsmentors }}}</script>
         <script src="/dist/js/map.js"></script>
 
     </body>
